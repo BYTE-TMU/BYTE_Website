@@ -33,7 +33,7 @@ export default function AnnouncementCard({
       <div 
         className="absolute inset-0"
         style={{ 
-          backgroundColor: '#ECE000',
+          backgroundColor: '#48F5FE',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
         }}
       />
@@ -41,12 +41,12 @@ export default function AnnouncementCard({
       <div 
         className="relative p-6 m-0.5 flex flex-col h-full"
         style={{
-          backgroundColor: '#157C7E',
+          backgroundColor: '#4C5EF6',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
         }}
       >
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium" style={{ color: '#ECE700' }}>
+          <p className="text-sm font-medium" style={{ color: '#48f5FE' }}>
             {date}
           </p>
           
@@ -55,6 +55,7 @@ export default function AnnouncementCard({
               text={buttonText}
               onClick={onButtonClick}
               className="absolute top-4 right-4"
+              variant="light"
             />
           )}
         </div>

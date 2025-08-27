@@ -53,8 +53,8 @@ export default function JoinSection({ memberUrl, discordUrl, teamUrl }: JoinSect
           viewport={{ once: true }}
         >
           <h2 
-            className="text-5xl lg:text-6xl font-orbitron font-black mb-8"
-            style={{ color: '#ECE000' }}
+            className="text-5xl lg:text-6xl font-orbitron font-black mb-8 text-transparent bg-clip-text"
+            style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           >
             Join BYTE
           </h2>
@@ -86,7 +86,7 @@ export default function JoinSection({ memberUrl, discordUrl, teamUrl }: JoinSect
               <div 
                 className="absolute inset-0"
                 style={{ 
-                  backgroundColor: '#ECE000',
+                  backgroundColor: '#48F5FE',
                   clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
                 }}
               />
@@ -94,7 +94,7 @@ export default function JoinSection({ memberUrl, discordUrl, teamUrl }: JoinSect
               <div 
                 className="relative p-6 m-0.5 h-full flex flex-col transition-all duration-200 group-hover:shadow-lg"
                 style={{
-                  backgroundColor: '#157C7E',
+                  backgroundColor: '#4C5EF6',
                   clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
                 }}
               >

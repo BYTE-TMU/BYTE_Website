@@ -25,7 +25,7 @@ export default function EventsPage() {
       
       <SliderSection
         title="Upcoming Events"
-        titleColor="#ECE000"
+        titleColor="#48F5FE"
         itemsPerPage={2}
       >
         {upcomingEventsData.map((event) => (

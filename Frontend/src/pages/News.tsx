@@ -15,7 +15,7 @@ export default function News() {
       
       <SliderSection
         title="Announcements"
-        titleColor="#ECE000"
+        titleColor="#48F5FE"
         itemsPerPage={2}
       >
         {announcementsData.map((announcement) => (

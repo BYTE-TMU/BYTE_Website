@@ -19,8 +19,8 @@ export default function PageTitle({ title, subtitle }: PageTitleProps) {
 
       <div className="relative max-w-7xl mx-auto px-6 text-center">
         <motion.h1
-          className="text-6xl lg:text-8xl font-orbitron font-black mb-8"
-          style={{ color: '#ECE000' }}
+          className="text-6xl lg:text-8xl font-orbitron font-black mb-8 text-transparent bg-clip-text"
+          style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

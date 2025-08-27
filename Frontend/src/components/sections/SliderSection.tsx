@@ -10,7 +10,7 @@ interface SliderSectionProps {
 
 export default function SliderSection({ 
   title, 
-  titleColor = '#ECE700', 
+  titleColor = 'white', 
   itemsPerPage, 
   children 
 }: SliderSectionProps) {
@@ -117,7 +117,7 @@ export default function SliderSection({
             <div 
               className="absolute inset-0"
               style={{ 
-                backgroundColor: '#ECE000',
+                backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
               }}
             />
@@ -146,7 +146,7 @@ export default function SliderSection({
             <div 
               className="absolute inset-0"
               style={{ 
-                backgroundColor: '#ECE000',
+                backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
               }}
             />

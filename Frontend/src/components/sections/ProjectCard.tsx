@@ -44,7 +44,7 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
       onDragEnd={onDragEnd}
       className="p-8 cursor-grab active:cursor-grabbing"
       style={{ 
-        backgroundColor: '#ECE700',
+        backgroundColor: '#48F5FE',
         clipPath: 'polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px))'
       }}
     >
@@ -74,7 +74,7 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
                 key={tech}
                 className="relative px-4 py-1.5 text-white font-medium text-sm"
                 style={{
-                  background: 'linear-gradient(to bottom, #26DFE4, #157C73)',
+                  backgroundColor: '#4C5EF6',
                   clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
                 }}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -94,9 +94,9 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative px-6 py-3 text-digital-abyss font-bold text-sm transition-all duration-200"
+              className="relative px-6 py-3 text-white font-bold text-sm transition-all duration-200"
               style={{
-                background: 'linear-gradient(to bottom, #B7FFB5, #31DE2B)',
+                background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
               }}
               whileHover={{ scale: 1.05, y: -2 }}

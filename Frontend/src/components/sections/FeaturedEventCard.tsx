@@ -39,7 +39,7 @@ export default function FeaturedEventCard({ event, formatDate }: FeaturedEventCa
         </h3>
         <div 
           className="h-1 mb-4"
-          style={{ backgroundColor: '#ECE700' }}
+          style={{ backgroundColor: '#48f5FE' }}
         />
         <p className="text-white/80 text-base">
           {formatDate(event.date)}

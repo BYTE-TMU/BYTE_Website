@@ -47,7 +47,7 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-acid-yellow via-terminal-green to-glitch-cyan mb-4">
+          <h2 className="text-5xl font-orbitron font-black text-white mb-4">
             Our Projects
           </h2>
           <div className="w-24 h-1 bg-terminal-green mx-auto" />
@@ -87,7 +87,7 @@ export default function Projects() {
             <div 
               className="absolute inset-0"
               style={{ 
-                backgroundColor: '#ECE000',
+                backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
               }}
             />
@@ -116,7 +116,7 @@ export default function Projects() {
             <div 
               className="absolute inset-0"
               style={{ 
-                backgroundColor: '#ECE000',
+                backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
               }}
             />

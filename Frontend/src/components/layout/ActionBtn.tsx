@@ -5,15 +5,16 @@ interface ActionBtnProps {
   text: string
   onClick: () => void
   className?: string
+  variant?: 'light' | 'dark'
 }
 
-export default function ActionBtn({ text, onClick, className = "" }: ActionBtnProps) {
+export default function ActionBtn({ text, onClick, className = "", variant = 'dark' }: ActionBtnProps) {
   return (
     <motion.button
       onClick={onClick}
-      className={`relative text-digital-abyss font-bold px-4 py-2 text-sm transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-green-400/50 ${className}`}
+      className={`relative font-bold px-4 py-2 text-sm transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-green-400/50 ${variant === 'light' ? 'text-black' : 'text-white'} ${className}`}
       style={{
-        background: 'linear-gradient(to bottom, #B7FFB5, #31DE2B)',
+        background: variant === 'light' ? '#48F5FE' : 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
         clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)'
       }}
       whileHover={{ scale: 1.05 }}

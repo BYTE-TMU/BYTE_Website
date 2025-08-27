@@ -96,7 +96,7 @@ export default function Navigation() {
               <img 
                 src="/BYTE-Logo.png" 
                 alt="BYTE Logo" 
-                className="h-20 w-auto"
+                className="h-12 w-auto"
               />
             </motion.div>
           </Link>
@@ -106,7 +106,7 @@ export default function Navigation() {
               <div 
                 className="absolute inset-0"
                 style={{ 
-                  backgroundColor: '#ECE000',
+                  backgroundColor: '#48F5FE',
                   clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
                 }}
               />
@@ -140,7 +140,7 @@ export default function Navigation() {
                   onClick={handleJoinClick}
                   className="relative text-digital-abyss font-bold px-4 py-2 text-sm transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-green-400/50"
                   style={{
-                    backgroundColor: '#31DE2B',
+                    backgroundColor: '#4C5EF6',
                     clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
                   }}
                   whileHover={{ scale: 1.05 }}

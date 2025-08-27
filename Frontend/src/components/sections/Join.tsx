@@ -32,7 +32,7 @@ export default function Join() {
           <div
             className="p-12 lg:p-16"
             style={{
-              backgroundColor: '#ECE700',
+              backgroundColor: '#48f5FE',
               clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))'
             }}
           >
@@ -62,9 +62,9 @@ export default function Join() {
               <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0">
                 <motion.button
                   onClick={handleJoinDiscord}
-                  className="relative px-8 py-4 text-digital-abyss font-bold text-lg transition-all duration-200"
+                  className="relative px-8 py-4 text-white font-bold text-lg transition-all duration-200"
                   style={{
-                    background: 'linear-gradient(to bottom, #B7FFB5, #31DE2B)',
+                    background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)'
                   }}
                   initial={{ opacity: 0, x: 30 }}
@@ -83,9 +83,9 @@ export default function Join() {
 
                 <motion.button
                   onClick={handleFillForm}
-                  className="relative px-8 py-4 text-digital-abyss font-bold text-lg transition-all duration-200"
+                  className="relative px-8 py-4 text-white font-bold text-lg transition-all duration-200"
                   style={{
-                    background: 'linear-gradient(to bottom, #B7FFB5, #31DE2B)',
+                    background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)'
                   }}
                   initial={{ opacity: 0, x: 30 }}
@@ -108,7 +108,7 @@ export default function Join() {
           <motion.div
             className="absolute -inset-4 opacity-30 blur-xl"
             style={{
-              background: 'linear-gradient(45deg, #ECE700, #31DE2B)',
+              background: 'linear-gradient(45deg, #48f5FE, #2C3790)',
               clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))',
               zIndex: -1
             }}

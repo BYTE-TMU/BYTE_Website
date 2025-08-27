@@ -30,7 +30,7 @@ export default function InfoCard({ card, index }: InfoCardProps) {
       <div 
         className="absolute inset-0"
         style={{ 
-          backgroundColor: '#ECE700',
+          backgroundColor: '#48f5FE',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
         }}
       />
@@ -38,7 +38,7 @@ export default function InfoCard({ card, index }: InfoCardProps) {
       <div 
         className="relative p-5 m-0.5 flex flex-col h-full"
         style={{
-          backgroundColor: '#157C7E',
+          backgroundColor: '#4C5EF6',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
         }}
       >

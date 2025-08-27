@@ -22,8 +22,8 @@ export default function Mission() {
           viewport={{ once: true }}
         >
           <h2 
-            className="text-5xl lg:text-6xl font-orbitron font-black mb-8"
-            style={{ color: '#ECE000' }}
+            className="text-5xl lg:text-6xl font-orbitron font-black mb-8 text-transparent bg-clip-text"
+            style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           >
             Our Mission
           </h2>

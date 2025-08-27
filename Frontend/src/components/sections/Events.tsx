@@ -67,8 +67,8 @@ export default function Events() {
           viewport={{ once: true }}
         >
           <h2 
-            className="text-5xl lg:text-6xl font-orbitron font-black mb-6"
-            style={{ color: '#ECE000' }}
+            className="text-5xl lg:text-6xl font-orbitron font-black mb-6 text-transparent bg-clip-text"
+            style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           >
             Our Events
           </h2>
@@ -87,7 +87,7 @@ export default function Events() {
           <div 
             className="absolute inset-0"
             style={{ 
-              backgroundColor: '#ECE700',
+              backgroundColor: '#48f5FE',
               clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))'
             }}
           />
@@ -95,7 +95,7 @@ export default function Events() {
           <div 
             className="relative p-6 lg:p-8 m-1"
             style={{
-              backgroundColor: '#157C7E',
+              backgroundColor: '#4C5EF6',
               clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))'
             }}
           >

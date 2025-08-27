@@ -42,7 +42,7 @@ export default function EventGridCard({ event, formatDate, index }: EventGridCar
         </h4>
         <div 
           className="h-0.5 mb-1"
-          style={{ backgroundColor: '#ECE700' }}
+          style={{ backgroundColor: '#48f5FE' }}
         />
         <p className="text-white/80 text-xs">
           {formatDate(event.date)}

@@ -29,7 +29,7 @@ export default function RecapCard({
       <div 
         className="p-6 flex flex-col justify-between h-full"
         style={{
-          backgroundColor: '#ECE700',
+          backgroundColor: '#48f5FE',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
         }}
       >
@@ -49,6 +49,7 @@ export default function RecapCard({
               text={buttonText}
               onClick={onButtonClick}
               className="w-full justify-center"
+              variant="dark"
             />
           </div>
         )}

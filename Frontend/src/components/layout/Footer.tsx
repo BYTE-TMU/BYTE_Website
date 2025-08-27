@@ -97,7 +97,8 @@ export default function Footer() {
               }}
             >
               <motion.h3 
-                className="text-4xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-acid-yellow via-terminal-green to-glitch-cyan mb-4"
+                className="text-4xl font-orbitron font-black text-transparent bg-clip-text mb-4"
+                style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
                 animate={{
                   textShadow: [
                     '0 0 10px #39FF14',
@@ -132,7 +133,7 @@ export default function Footer() {
 
             <div className="space-y-2 font-tech-mono text-xs">
               <div className="text-terminal-green">
-                STATUS: <span className="text-acid-yellow">{footerData.brandingInfo.status.current}</span>
+                STATUS: <span style={{ color: '#48F5FE' }}>{footerData.brandingInfo.status.current}</span>
               </div>
               <div className="text-glitch-cyan">
                 VERSION: <span className="text-ghost-white">{footerData.brandingInfo.status.version}</span>
@@ -205,7 +206,8 @@ export default function Footer() {
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-terminal-green to-transparent opacity-50" />
       
       <motion.div
-        className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-acid-yellow to-transparent"
+        className="absolute top-0 left-0 w-full h-px"
+        style={{ background: 'linear-gradient(to right, transparent, #48F5FE, transparent)' }}
         animate={{
           opacity: [0.3, 0.8, 0.3],
           scaleX: [0.8, 1, 0.8]
