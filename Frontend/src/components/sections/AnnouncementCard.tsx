@@ -1,0 +1,87 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+import ActionBtn from '@/components/layout/ActionBtn'
+
+interface AnnouncementCardProps {
+  date: string
+  title: string
+  description: string
+  imageUrl?: string
+  buttonText?: string
+  onButtonClick?: () => void
+}
+
+export default function AnnouncementCard({ 
+  date, 
+  title, 
+  description, 
+  imageUrl, 
+  buttonText, 
+  onButtonClick 
+}: AnnouncementCardProps) {
+  const showButton = buttonText && onButtonClick
+
+  return (
+    <motion.div
+      className="relative"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+    >
+      <div 
+        className="absolute inset-0"
+        style={{ 
+          backgroundColor: '#ECE000',
+          clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
+        }}
+      />
+      
+      <div 
+        className="relative p-6 m-0.5 flex flex-col h-full"
+        style={{
+          backgroundColor: '#157C7E',
+          clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
+        }}
+      >
+        <div className="flex justify-between items-start mb-4">
+          <p className="text-sm font-medium" style={{ color: '#ECE700' }}>
+            {date}
+          </p>
+          
+          {showButton && (
+            <ActionBtn
+              text={buttonText}
+              onClick={onButtonClick}
+              className="absolute top-4 right-4"
+            />
+          )}
+        </div>
+
+        <h3 className="text-xl font-bold text-white mb-3">
+          {title}
+        </h3>
+
+        <p className="text-white/80 text-sm leading-relaxed mb-6 flex-grow">
+          {description}
+        </p>
+
+        <div className="aspect-[16/9] bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden mt-auto">
+          {imageUrl ? (
+            <img 
+              src={imageUrl}
+              alt={`${title} illustration`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+              <span className="text-gray-500 text-sm">Image placeholder</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  )
+}

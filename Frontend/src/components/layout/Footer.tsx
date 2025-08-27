@@ -1,0 +1,217 @@
+import React, { useState, useRef, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { footerData } from '@/data/footerData'
+import FooterSection from './FooterSection'
+import SystemStatus from './SystemStatus'
+
+export default function Footer() {
+  const matrixRef = useRef<HTMLCanvasElement>(null)
+  const [logoGlitch, setLogoGlitch] = useState(false)
+
+  useEffect(() => {
+    if (!matrixRef.current) return
+
+    const canvas = matrixRef.current
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    
+    const updateCanvasSize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    
+    updateCanvasSize()
+    window.addEventListener('resize', updateCanvasSize)
+
+    const fontSize = 14
+    const columns = Math.floor(canvas.width / fontSize)
+    const drops = Array(columns).fill(0)
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(10, 14, 27, 0.05)'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+      ctx.fillStyle = '#39FF14'
+      ctx.font = `${fontSize}px 'Share Tech Mono', monospace`
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = footerData.matrixCharacters[Math.floor(Math.random() * footerData.matrixCharacters.length)]
+        const x = i * fontSize
+        const y = drops[i] * fontSize
+
+        ctx.fillText(text, x, y)
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0
+        }
+        drops[i]++
+      }
+    }
+
+    const interval = setInterval(draw, 50)
+
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('resize', updateCanvasSize)
+    }
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLogoGlitch(true)
+      setTimeout(() => setLogoGlitch(false), 200)
+    }, 10000)
+    
+    return () => clearInterval(interval)
+  }, [])
+
+  const scrollToSection = (href: string) => {
+    if (href.startsWith('#')) {
+      const element = document.getElementById(href.slice(1))
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      window.open(href, '_blank', 'noopener,noreferrer')
+    }
+  }
+
+  return (
+    <footer className="relative bg-gradient-to-b from-digital-abyss to-digital-abyss border-t border-terminal-green/30 overflow-hidden">
+      <canvas
+        ref={matrixRef}
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{ width: '100%', height: '100%' }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-4 lg:grid-rows-2 gap-12 mb-12">
+          <div className="lg:row-span-2">
+            <motion.div
+              className="mb-8"
+              onMouseEnter={() => setLogoGlitch(true)}
+              onMouseLeave={() => setLogoGlitch(false)}
+              style={{
+                transform: logoGlitch ? 'translateX(2px) translateY(1px)' : 'none',
+                filter: logoGlitch ? 'hue-rotate(90deg) saturate(200%)' : 'none'
+              }}
+            >
+              <motion.h3 
+                className="text-4xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-acid-yellow via-terminal-green to-glitch-cyan mb-4"
+                animate={{
+                  textShadow: [
+                    '0 0 10px #39FF14',
+                    '0 0 20px #39FF14, 0 0 30px #00FFFF',
+                    '0 0 10px #39FF14'
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                BYTE
+              </motion.h3>
+              
+              <motion.div
+                className="absolute inset-0 text-4xl font-orbitron font-black text-red-500 opacity-20"
+                animate={{
+                  x: [-1, 1, -1, 0],
+                  y: [-1, 0, 1, 0]
+                }}
+                transition={{
+                  duration: 0.2,
+                  repeat: Infinity,
+                  repeatDelay: 8
+                }}
+              >
+                BYTE
+              </motion.div>
+            </motion.div>
+            
+            <p className="font-tech-mono text-ghost-white/70 text-sm leading-relaxed mb-6">
+              {footerData.brandingInfo.description}
+            </p>
+
+            <div className="space-y-2 font-tech-mono text-xs">
+              <div className="text-terminal-green">
+                STATUS: <span className="text-acid-yellow">{footerData.brandingInfo.status.current}</span>
+              </div>
+              <div className="text-glitch-cyan">
+                VERSION: <span className="text-ghost-white">{footerData.brandingInfo.status.version}</span>
+              </div>
+              <div className="text-purple-400">
+                UPTIME: <span className="text-ghost-white">{footerData.brandingInfo.status.uptime}</span>
+              </div>
+            </div>
+          </div>
+
+          <FooterSection
+            section={footerData.sections.joinByte}
+            index={0}
+            onLinkClick={scrollToSection}
+          />
+          <FooterSection
+            section={footerData.sections.about}
+            index={1}
+            onLinkClick={scrollToSection}
+          />
+          <FooterSection
+            section={footerData.sections.projects}
+            index={2}
+            onLinkClick={scrollToSection}
+          />
+
+          <FooterSection
+            section={footerData.sections.events}
+            index={3}
+            onLinkClick={scrollToSection}
+          />
+          <FooterSection
+            section={footerData.sections.connect}
+            index={4}
+            onLinkClick={scrollToSection}
+          />
+          <FooterSection
+            section={footerData.sections.legal}
+            index={5}
+            onLinkClick={scrollToSection}
+          />
+        </div>
+
+        <motion.div
+          className="border-t border-terminal-green/20 pt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            <div className="font-tech-mono text-ghost-white/60 text-xs">
+              {footerData.copyright}
+            </div>
+            
+            <div className="flex items-center space-x-6 font-tech-mono text-xs">
+              {footerData.systemStatus.map((status, index) => (
+                <SystemStatus 
+                  key={index}
+                  label={status.label} 
+                  status={status.status} 
+                  color={status.color} 
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-terminal-green to-transparent opacity-50" />
+      
+      <motion.div
+        className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-acid-yellow to-transparent"
+        animate={{
+          opacity: [0.3, 0.8, 0.3],
+          scaleX: [0.8, 1, 0.8]
+        }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+    </footer>
+  )
+}
