@@ -65,16 +65,13 @@ The application will be available at `http://localhost:5173`
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
-- `npm run typecheck` - Run TypeScript compiler
 
 ## Task List
 
 ### Current Sprint
 
-- [ ] Change footer colors to match new color scheme
 - [ ] Create "Meet the Team" component for About page
 - [ ] Create "Project Contributors" component for About page
-- [ ] Develop Contact component for Support page
 - [ ] Implement consistent background styling across all pages
 - [ ] Refine Hero section to match Figma design specifications
 
@@ -88,6 +85,8 @@ The application will be available at `http://localhost:5173`
 ### Completed
 
 - [x] Implement new color scheme rebrand
+- [x] Change footer colors to match new color scheme
+- [x] Develop Contact component for Support page
 
 ## Design System
 

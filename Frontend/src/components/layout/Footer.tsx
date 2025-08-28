@@ -31,7 +31,7 @@ export default function Footer() {
       ctx.fillStyle = 'rgba(10, 14, 27, 0.05)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = '#39FF14'
+      ctx.fillStyle = '#48F5FE'
       ctx.font = `${fontSize}px 'Share Tech Mono', monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -77,7 +77,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-gradient-to-b from-digital-abyss to-digital-abyss border-t border-terminal-green/30 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-digital-abyss to-digital-abyss border-t border-[#48F5FE]/30 overflow-hidden">
       <canvas
         ref={matrixRef}
         className="absolute inset-0 opacity-20 pointer-events-none"
@@ -101,9 +101,9 @@ export default function Footer() {
                 style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
                 animate={{
                   textShadow: [
-                    '0 0 10px #39FF14',
-                    '0 0 20px #39FF14, 0 0 30px #00FFFF',
-                    '0 0 10px #39FF14'
+                    '0 0 10px #48F5FE',
+                    '0 0 20px #48F5FE, 0 0 30px #4C5EF6',
+                    '0 0 10px #48F5FE'
                   ]
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
@@ -132,13 +132,13 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2 font-tech-mono text-xs">
-              <div className="text-terminal-green">
-                STATUS: <span style={{ color: '#48F5FE' }}>{footerData.brandingInfo.status.current}</span>
+              <div style={{ color: '#48F5FE' }}>
+                STATUS: <span style={{ color: '#CEFE00' }}>{footerData.brandingInfo.status.current}</span>
               </div>
-              <div className="text-glitch-cyan">
+              <div style={{ color: '#4C5EF6' }}>
                 VERSION: <span className="text-ghost-white">{footerData.brandingInfo.status.version}</span>
               </div>
-              <div className="text-purple-400">
+              <div style={{ color: '#2B9398' }}>
                 UPTIME: <span className="text-ghost-white">{footerData.brandingInfo.status.uptime}</span>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function Footer() {
         </div>
 
         <motion.div
-          className="border-t border-terminal-green/20 pt-8"
+          className="border-t border-[#48F5FE]/20 pt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -203,7 +203,7 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-terminal-green to-transparent opacity-50" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#48F5FE] to-transparent opacity-50" />
       
       <motion.div
         className="absolute top-0 left-0 w-full h-px"

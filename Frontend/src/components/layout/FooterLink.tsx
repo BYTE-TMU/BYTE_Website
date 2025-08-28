@@ -20,13 +20,13 @@ export default function FooterLink({ link, onClick, index }: FooterLinkProps) {
     >
       <motion.button
         onClick={onClick}
-        className="font-tech-mono text-ghost-white/70 hover:text-glitch-cyan text-sm transition-all duration-300 group flex items-center space-x-2"
+        className="font-tech-mono text-ghost-white/70 hover:text-[#48F5FE] text-sm transition-all duration-300 group flex items-center space-x-2"
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         whileHover={{ x: 5 }}
       >
         <motion.span
-          className="text-terminal-green opacity-0 group-hover:opacity-100"
+          className="text-[#48F5FE] opacity-0 group-hover:opacity-100"
           animate={isHovered ? {
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360]

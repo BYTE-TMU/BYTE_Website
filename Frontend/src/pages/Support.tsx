@@ -1,6 +1,7 @@
 import React from 'react'
 import PageTitle from '@/components/layout/PageTitle'
 import FAQSection from '@/components/sections/FAQSection'
+import Contact from '@/components/sections/Contact'
 import JoinSection from '@/components/sections/JoinSection'
 
 export default function Support() {
@@ -12,6 +13,8 @@ export default function Support() {
       />
       
       <FAQSection />
+      
+      <Contact />
       
       <JoinSection
         memberUrl="/apply/member"
