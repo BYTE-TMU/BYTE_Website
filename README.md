@@ -70,8 +70,6 @@ The application will be available at `http://localhost:5173`
 
 ### Current Sprint
 
-- [ ] Create "Meet the Team" component for About page
-- [ ] Create "Project Contributors" component for About page
 - [ ] Implement consistent background styling across all pages
 - [ ] Refine Hero section to match Figma design specifications
 
@@ -87,6 +85,8 @@ The application will be available at `http://localhost:5173`
 - [x] Implement new color scheme rebrand
 - [x] Change footer colors to match new color scheme
 - [x] Develop Contact component for Support page
+- [x] Create "Meet the Team" component for About page
+- [x] Create "Project Contributors" component for About page
 
 ## Design System
 
