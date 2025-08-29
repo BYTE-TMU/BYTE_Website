@@ -17,6 +17,7 @@ export default function AboutPage() {
       <TeamSection 
         title="MEET THE TEAM"
         teamData={meetTheTeamData}
+        showPrototypes={true}
       />
       
       <TeamSection 

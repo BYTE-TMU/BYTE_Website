@@ -5,6 +5,7 @@ export interface Member {
   position: string
   profilePicUrl: string
   rank: number // Higher number = larger circle (President: 100, VP: 80, Director: 60, Manager: 50, Member: 40)
+  connections?: string[] // IDs of connected members for network visualization
 }
 
 export interface TeamCategory {
@@ -22,28 +23,32 @@ export const meetTheTeamData: TeamCategory[] = [
         name: 'Meet Patadia',
         position: 'President',
         profilePicUrl: 'https://picsum.photos/200/200?random=1',
-        rank: 100
+        rank: 100,
+        connections: ['cos-001', 'vp-tech-001', 'vp-events-001', 'head-tech-001', 'head-strat-001']
       },
       {
         id: 'cos-001',
         name: 'Pearl Ved',
         position: 'Chief of Staff',
         profilePicUrl: 'https://picsum.photos/200/200?random=2',
-        rank: 95
+        rank: 95,
+        connections: ['pres-001', 'head-tech-001', 'head-strat-001']
       },
       {
         id: 'vp-tech-001',
         name: 'Jacob Mobin',
         position: 'VP of Technology',
         profilePicUrl: 'https://picsum.photos/200/200?random=3',
-        rank: 90
+        rank: 90,
+        connections: ['pres-001', 'head-tech-001', 'dir-frontend-001', 'dir-ai-001', 'dir-backend-001']
       },
       {
         id: 'vp-events-001',
         name: 'Arshiya Das',
         position: 'VP of Events',
         profilePicUrl: 'https://picsum.photos/200/200?random=4',
-        rank: 90
+        rank: 90,
+        connections: ['pres-001', 'head-strat-001', 'events-assoc-001']
       }
     ]
   },
@@ -55,21 +60,24 @@ export const meetTheTeamData: TeamCategory[] = [
         name: 'Yeji Lee',
         position: 'Head of Strategic Operations',
         profilePicUrl: 'https://picsum.photos/200/200?random=5',
-        rank: 80
+        rank: 80,
+        connections: ['pres-001', 'cos-001', 'vp-events-001']
       },
       {
         id: 'events-assoc-001',
         name: 'Rishita Patel',
         position: 'Events Associate',
         profilePicUrl: 'https://picsum.photos/200/200?random=6',
-        rank: 60
+        rank: 60,
+        connections: ['vp-events-001']
       },
       {
         id: 'designer-001',
         name: 'Zahra Zahra',
         position: 'Graphic Designer',
         profilePicUrl: 'https://picsum.photos/200/200?random=7',
-        rank: 60
+        rank: 60,
+        connections: ['vp-events-001']
       }
     ]
   },
@@ -81,84 +89,96 @@ export const meetTheTeamData: TeamCategory[] = [
         name: 'Hetvi Modi',
         position: 'Head of Technical Operations',
         profilePicUrl: 'https://picsum.photos/200/200?random=8',
-        rank: 80
+        rank: 80,
+        connections: ['pres-001', 'cos-001', 'vp-tech-001', 'proj-exp-lead-001']
       },
       {
         id: 'proj-exp-lead-001',
         name: 'Rayan Roshan',
         position: 'Project Experience Lead',
         profilePicUrl: 'https://picsum.photos/200/200?random=9',
-        rank: 75
+        rank: 75,
+        connections: ['head-tech-001', 'vp-tech-001']
       },
       {
         id: 'dir-frontend-001',
         name: 'Mashrufa Orchi',
         position: 'Director of Frontend Engineering',
         profilePicUrl: 'https://picsum.photos/200/200?random=10',
-        rank: 70
+        rank: 70,
+        connections: ['vp-tech-001', 'frontend-eng-001', 'frontend-eng-002']
       },
       {
         id: 'dir-ai-001',
         name: 'Prisha Thakkar',
         position: 'Director of AI/ML Engineering',
         profilePicUrl: 'https://picsum.photos/200/200?random=11',
-        rank: 70
+        rank: 70,
+        connections: ['vp-tech-001', 'aiml-eng-001', 'aiml-eng-002', 'aiml-eng-003']
       },
       {
         id: 'dir-backend-001',
         name: 'Roxie Reginold',
         position: 'Director of Backend Engineering',
         profilePicUrl: 'https://picsum.photos/200/200?random=12',
-        rank: 70
+        rank: 70,
+        connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002']
       },
       {
         id: 'frontend-eng-001',
         name: 'Johan Philip',
         position: 'Frontend Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=13',
-        rank: 50
+        rank: 50,
+        connections: ['dir-frontend-001']
       },
       {
         id: 'frontend-eng-002',
         name: 'Alex Nguyen',
         position: 'Frontend Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=14',
-        rank: 50
+        rank: 50,
+        connections: ['dir-frontend-001']
       },
       {
         id: 'aiml-eng-001',
         name: 'Nancy Maliackel',
         position: 'AI/ML Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=15',
-        rank: 50
+        rank: 50,
+        connections: ['dir-ai-001']
       },
       {
         id: 'aiml-eng-002',
         name: 'Joshua Joseph',
         position: 'AI/ML Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=16',
-        rank: 50
+        rank: 50,
+        connections: ['dir-ai-001']
       },
       {
         id: 'aiml-eng-003',
         name: 'Gajanan Vigneswaran',
         position: 'AI/ML Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=17',
-        rank: 50
+        rank: 50,
+        connections: ['dir-ai-001']
       },
       {
         id: 'backend-eng-001',
         name: 'Maha Baig',
         position: 'Backend Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=18',
-        rank: 50
+        rank: 50,
+        connections: ['dir-backend-001']
       },
       {
         id: 'backend-eng-002',
         name: 'Elena Kim',
         position: 'Backend Engineer',
         profilePicUrl: 'https://picsum.photos/200/200?random=19',
-        rank: 50
+        rank: 50,
+        connections: ['dir-backend-001']
       }
     ]
   }

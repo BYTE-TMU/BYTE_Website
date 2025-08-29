@@ -71,7 +71,6 @@ The application will be available at `http://localhost:5173`
 ### Current Sprint
 
 - [ ] Implement consistent background styling across all pages
-- [ ] Refine Hero section to match Figma design specifications
 
 ### Upcoming Development
 
@@ -87,6 +86,8 @@ The application will be available at `http://localhost:5173`
 - [x] Develop Contact component for Support page
 - [x] Create "Meet the Team" component for About page
 - [x] Create "Project Contributors" component for About page
+- [x] Refine Hero section to match Figma design specifications
+- [x] Update Team section component to display small teams better, and add whole team tab
 
 ## Design System
 

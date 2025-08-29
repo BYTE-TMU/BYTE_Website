@@ -82,7 +82,7 @@ export default function Hero() {
           className="mb-8 mt-16"
           variants={logoVariants}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-lastica font-black text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white" style={{ fontFamily: 'Lastica, sans-serif' }}>
             {displayText}
             <motion.span
               className="inline-block w-1 h-8 bg-[#48F5FE] ml-1"

@@ -1,15 +1,58 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { TeamCategory } from '../../data/teamData'
+import { motion, AnimatePresence } from 'framer-motion'
+import { TeamCategory, Member } from '../../data/teamData'
 import BubbleCloud from './BubbleCloud'
+import TeamNetwork from './TeamNetwork'
+import TeamCardGrid from './TeamCardGrid'
+import MemberModal from './MemberModal'
 
 interface TeamSectionProps {
   title: string
   teamData: TeamCategory[]
+  showPrototypes?: boolean // Optional prop to enable prototype tabs
 }
 
-export default function TeamSection({ title, teamData }: TeamSectionProps) {
+interface TabConfig {
+  name: string
+  type: 'bubble' | 'network' | 'cards'
+  data: TeamCategory | Member[]
+}
+
+export default function TeamSection({ title, teamData, showPrototypes = false }: TeamSectionProps) {
   const [activeTab, setActiveTab] = useState(0)
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null)
+  
+  // Flatten all members for "All Members" tabs
+  const allMembers = teamData.flatMap(category => category.members)
+  const leadershipMembers = teamData.find(cat => cat.categoryName === 'Leadership')?.members || []
+  
+  // Configure tabs based on showPrototypes prop
+  const tabs: TabConfig[] = [
+    // Prototype tabs first (only if enabled)
+    ...(showPrototypes ? [
+      {
+        name: 'All Members - Bubble',
+        type: 'bubble' as const,
+        data: { categoryName: 'All Members', members: allMembers }
+      },
+      {
+        name: 'All Members - Network',
+        type: 'network' as const,
+        data: allMembers
+      },
+      {
+        name: 'Leadership - Cards',
+        type: 'cards' as const,
+        data: leadershipMembers
+      }
+    ] : []),
+    // Original tabs after prototypes
+    ...teamData.map(category => ({
+      name: category.categoryName,
+      type: 'bubble' as const,
+      data: category
+    }))
+  ]
   
   return (
     <section className="py-20 bg-digital-abyss relative overflow-hidden">
@@ -61,12 +104,12 @@ export default function TeamSection({ title, teamData }: TeamSectionProps) {
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
               }}
             >
-              <div className="flex items-center">
-                {teamData.map((category, index) => (
+              <div className="flex items-center flex-wrap">
+                {tabs.map((tab, index) => (
                   <motion.button
-                    key={category.categoryName}
+                    key={tab.name}
                     onClick={() => setActiveTab(index)}
-                    className="relative px-6 py-3 font-tech-mono font-bold text-sm transition-all duration-300 group"
+                    className="relative px-4 py-3 font-tech-mono font-bold text-xs transition-all duration-300 group mx-1 my-1"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -89,7 +132,7 @@ export default function TeamSection({ title, teamData }: TeamSectionProps) {
                           : 'text-ghost-white/80 hover:text-white'
                       }`}
                     >
-                      {category.categoryName}
+                      {tab.name}
                     </span>
                     
                     {/* Hover effect for non-active tabs */}
@@ -116,8 +159,13 @@ export default function TeamSection({ title, teamData }: TeamSectionProps) {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.5 }}
         >
-          {teamData[activeTab] && (
-            <BubbleCloud members={teamData[activeTab].members} />
+          {tabs[activeTab] && (
+            <TeamDisplay 
+              tab={tabs[activeTab]} 
+              onMemberClick={(member) => {
+                setSelectedMember(member)
+              }}
+            />
           )}
         </motion.div>
         
@@ -130,7 +178,7 @@ export default function TeamSection({ title, teamData }: TeamSectionProps) {
           viewport={{ once: true }}
         >
           <p className="text-ghost-white/80 font-tech-mono">
-            {teamData[activeTab]?.members.length || 0} members in {teamData[activeTab]?.categoryName}
+            {getMemberCount(tabs[activeTab])} members in {tabs[activeTab]?.name}
           </p>
         </motion.div>
         
@@ -140,6 +188,45 @@ export default function TeamSection({ title, teamData }: TeamSectionProps) {
         <div className="absolute bottom-20 left-20 w-3 h-3 bg-[#4C5EF6] rounded-full opacity-25 animate-pulse" style={{ animationDelay: '2s' }} />
         <div className="absolute bottom-40 right-10 w-5 h-5 bg-[#2B9398] rounded-full opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }} />
       </div>
+
+      {/* Member Details Modal */}
+      <MemberModal
+        member={selectedMember}
+        isOpen={!!selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </section>
   )
 }
+
+// Helper function to get member count
+function getMemberCount(tab: TabConfig | undefined): number {
+  if (!tab) return 0
+  if (Array.isArray(tab.data)) {
+    return tab.data.length
+  }
+  return (tab.data as TeamCategory).members?.length || 0
+}
+
+// Team display component that renders the appropriate visualization
+function TeamDisplay({ tab, onMemberClick }: { tab: TabConfig; onMemberClick: (member: Member) => void }) {
+  switch (tab.type) {
+    case 'bubble':
+      const bubbleData = Array.isArray(tab.data) 
+        ? { categoryName: 'All Members', members: tab.data }
+        : tab.data as TeamCategory
+      return <BubbleCloud members={bubbleData.members} />
+      
+    case 'network':
+      const networkMembers = Array.isArray(tab.data) ? tab.data : []
+      return <TeamNetwork members={networkMembers} onMemberClick={onMemberClick} />
+      
+    case 'cards':
+      const cardMembers = Array.isArray(tab.data) ? tab.data : []
+      return <TeamCardGrid members={cardMembers} onMemberClick={onMemberClick} />
+      
+    default:
+      return null
+  }
+}
+
