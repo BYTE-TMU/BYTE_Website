@@ -71,7 +71,7 @@ export default function Contact() {
   ]
 
   return (
-    <section className="py-20 bg-digital-abyss relative overflow-hidden">
+    <section className="py-20 bg-digital-abyss relative overflow-hidden" id="contact">
       <div className="absolute inset-0 opacity-10">
         <div className="grid grid-cols-12 h-full">
           {Array.from({ length: 12 }).map((_, i) => (

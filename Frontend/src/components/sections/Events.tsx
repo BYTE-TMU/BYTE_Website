@@ -10,37 +10,79 @@ export default function Events() {
   const [featuredEvent, setFeaturedEvent] = useState<Event | null>(null)
   const [gridEvents, setGridEvents] = useState<Event[]>([])
 
-  useEffect(() => {
-    const currentDate = new Date()
-    
-    const upcoming = eventsData
+  // Helper functions for filtering events
+  const getUpcomingEvents = (): Event[] => {
+    const currentDate = new Date();
+    return eventsData
       .filter(event => new Date(event.date) >= currentDate)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    
-    const past = eventsData
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  };
+
+  const getPastEvents = (): Event[] => {
+    const currentDate = new Date();
+    return eventsData
       .filter(event => new Date(event.date) < currentDate)
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  };
+
+  useEffect(() => {
+    const upcoming = getUpcomingEvents()
+    const past = getPastEvents()
 
     setUpcomingEvents(upcoming)
     setPastEvents(past)
 
-    const featured = upcoming.length > 0 ? upcoming[0] : (past.length > 0 ? past[0] : null)
+    // Set featured event or create placeholder
+    let featured: Event | null = null
+    if (upcoming.length > 0) {
+      featured = upcoming[0]
+    } else if (past.length > 0) {
+      featured = past[0]
+    } else {
+      // Create placeholder featured event
+      featured = {
+        id: 'featured-placeholder',
+        title: 'Coming Soon',
+        date: 'TBA',
+        description: 'Stay tuned for more exciting events and workshops.',
+        imageUrl: 'https://picsum.photos/600/400?random=featured-placeholder',
+        location: 'TMU Campus',
+        type: 'social' as const
+      }
+    }
     setFeaturedEvent(featured)
 
+    // Build grid with placeholders if needed
     let grid: Event[] = []
-    
     const remainingUpcoming = upcoming.slice(1)
     grid = [...remainingUpcoming]
-    
+
     if (grid.length < 6) {
-      const neededCount = 6 - grid.length
-      grid = [...grid, ...past.slice(0, neededCount)]
+      const neededFromPast = Math.min(6 - grid.length, past.length)
+      grid = [...grid, ...past.slice(0, neededFromPast)]
     }
-    
+
+    // Add placeholders to fill remaining slots
+    if (grid.length < 6) {
+      const placeholdersNeeded = 6 - grid.length
+      for (let i = 0; i < placeholdersNeeded; i++) {
+        grid.push({
+          id: `grid-placeholder-${i}`,
+          title: 'Coming Soon',
+          date: 'TBA',
+          description: 'Stay tuned for upcoming events.',
+          imageUrl: 'https://picsum.photos/300/200?random=grid-placeholder',
+          location: 'TMU Campus',
+          type: 'social' as const
+        })
+      }
+    }
+
     setGridEvents(grid.slice(0, 6))
   }, [])
 
   const formatDate = (dateString: string) => {
+    if (dateString === 'TBA') return 'TBA'
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', {
       month: 'long',
@@ -102,7 +144,11 @@ export default function Events() {
             <div className="grid lg:grid-cols-5 gap-8">
               <div className="lg:col-span-2">
                 {featuredEvent && (
-                  <FeaturedEventCard event={featuredEvent} formatDate={formatDate} />
+                  <FeaturedEventCard
+                    event={featuredEvent}
+                    formatDate={formatDate}
+                    isPlaceholder={featuredEvent.id.includes('placeholder')}
+                  />
                 )}
               </div>
 
@@ -114,6 +160,7 @@ export default function Events() {
                       event={event}
                       formatDate={formatDate}
                       index={index}
+                      isPlaceholder={event.id.includes('placeholder')}
                     />
                   ))}
                 </div>

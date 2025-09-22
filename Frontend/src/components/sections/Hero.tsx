@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { heroData } from '@/data/heroData'
+
+const heroData = {
+  mainText: "Build Your Technical Experience",
+  subtitle: "TMU's First Student-Led AI Innovation Lab",
+  buttons: {
+    primary: "Join the Revolution",
+    secondary: "Explore Projects"
+  }
+}
 
 export default function Hero() {
   const [logoLoaded, setLogoLoaded] = useState(false)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FooterLink as FooterLinkType } from '@/data/footerData'
+import { FooterLink as FooterLinkType } from './Footer'
 
 interface FooterLinkProps {
   link: FooterLinkType

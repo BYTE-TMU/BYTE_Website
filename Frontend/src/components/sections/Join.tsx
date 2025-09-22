@@ -1,6 +1,21 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { joinData } from '@/data/joinData'
+
+const joinData = {
+  headline: "Join BYTE",
+  subheadline: "Start your technical experience today",
+  buttons: {
+    discord: {
+      text: "Join Discord",
+      url: "https://discord.gg/byte-community"
+    },
+    form: {
+      text: "Fill out form",
+      url: "#join-form"
+    }
+  },
+  additionalInfo: "Join our community of innovators, developers, and tech enthusiasts at Toronto Metropolitan University"
+};
 
 export default function Join() {
   const handleJoinDiscord = () => {

@@ -55,7 +55,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
   ]
   
   return (
-    <section className="py-20 bg-digital-abyss relative overflow-hidden">
+    <section className="py-20 bg-digital-abyss relative overflow-hidden" id="team">
       {/* Background grid pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="grid grid-cols-12 h-full">

@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { menuItems } from '@/data/navigationData'
+
+interface MenuItem {
+  label: string;
+  href: string;
+}
+
+const menuItems: MenuItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'News', href: '/news' },
+  { label: 'Events', href: '/events' },
+  { label: 'Support', href: '/support' }
+];
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

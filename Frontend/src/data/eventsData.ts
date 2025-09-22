@@ -1,93 +1,75 @@
+export interface EventRecap {
+  summary: string
+  images: string[]
+}
+
 export interface Event {
   id: string
   title: string
   date: string
   description: string
   imageUrl?: string
-  location: string
-  type: 'workshop' | 'hackathon' | 'networking' | 'social' | 'competition'
+  location?: string
+  type?: 'workshop' | 'hackathon' | 'networking' | 'social' | 'competition'
+  registrationUrl?: string
+  recapUrl?: string
+  recap?: EventRecap
 }
 
 export const eventsData: Event[] = [
+  // Past Events (before Sept 22, 2025)
   {
-    id: '1',
-    title: 'BYTE Kick-off Event',
-    date: '2025-09-15',
-    description: 'Join us for the official launch of BYTE organization. Meet fellow members, learn about upcoming projects, and network with like-minded individuals.',
-    imageUrl: 'https://picsum.photos/600/338?random=1',
+    id: 'past-1',
+    title: 'BYTE Kick-off 2025',
+    date: '2025-01-25',
+    description: 'Get to know BYTE, our team and how you can get involved in our exciting new year initiatives.',
+    imageUrl: 'https://picsum.photos/320/180?random=10',
     location: 'TMU Student Learning Centre',
-    type: 'social'
+    type: 'social',
+    recapUrl: 'https://byte.org/recaps/kickoff-2025',
+    recap: {
+      summary: 'Our 2025 kick-off event was a huge success! Over 200 students attended to learn about BYTE\'s mission and upcoming projects. We introduced our new SecureBYTE initiative and welcomed dozens of new members to our community. The event featured networking sessions, project demos, and an exciting roadmap presentation for the year ahead.',
+      images: [
+        'https://picsum.photos/800/600?random=kickoff1',
+        'https://picsum.photos/800/600?random=kickoff2',
+        'https://picsum.photos/800/600?random=kickoff3',
+        'https://picsum.photos/800/600?random=kickoff4',
+        'https://picsum.photos/800/600?random=kickoff5'
+      ]
+    }
   },
   {
-    id: '2',
+    id: 'past-2',
+    title: 'React Workshop Series',
+    date: '2025-02-08',
+    description: 'Learn modern React development from the basics to advanced concepts in our comprehensive workshop series.',
+    imageUrl: 'https://picsum.photos/320/180?random=11',
+    location: 'Engineering Building Room 302',
+    type: 'workshop',
+    recapUrl: 'https://byte.org/recaps/react-workshop-2025',
+    recap: {
+      summary: 'Our React workshop series exceeded expectations with 150+ participants across three sessions. Students built real-world applications, learned modern React patterns including hooks and context, and worked on collaborative projects. Many participants continued to contribute to our open-source projects after the workshop.',
+      images: [
+        'https://picsum.photos/800/600?random=react1',
+        'https://picsum.photos/800/600?random=react2',
+        'https://picsum.photos/800/600?random=react3',
+        'https://picsum.photos/800/600?random=react4'
+      ]
+    }
+  },
+  
+
+  // Upcoming Events (after Sept 22, 2025)
+  {
+    id: 'upcoming-1',
     title: 'AI Workshop Series: Introduction to Machine Learning',
-    date: '2025-09-25',
+    date: '2025-10-05',
     description: 'A comprehensive workshop covering the fundamentals of machine learning, including hands-on coding exercises with Python and TensorFlow.',
     imageUrl: 'https://picsum.photos/300/169?random=2',
     location: 'Engineering Building Room 302',
-    type: 'workshop'
+    type: 'workshop',
+    registrationUrl: 'https://forms.google.com/ml-workshop-2025'
   },
-  {
-    id: '3',
-    title: 'SecureBYTE Hackathon',
-    date: '2025-07-10',
-    description: '48-hour hackathon focused on cybersecurity solutions. Build innovative security tools and compete for prizes.',
-    imageUrl: 'https://picsum.photos/300/169?random=3',
-    location: 'Student Campus Centre',
-    type: 'hackathon'
-  },
-  {
-    id: '4',
-    title: 'Tech Industry Networking Night',
-    date: '2025-10-28',
-    description: 'Connect with industry professionals, alumni, and potential employers in the tech sector.',
-    imageUrl: 'https://picsum.photos/300/169?random=4',
-    location: 'Ryerson Theatre',
-    type: 'networking'
-  },
-  {
-    id: '5',
-    title: 'Web Development Bootcamp',
-    date: '2025-11-15',
-    description: 'Intensive weekend bootcamp covering modern web development with React, Node.js, and cloud deployment.',
-    imageUrl: 'https://picsum.photos/300/169?random=5',
-    location: 'Computer Lab ENG-213',
-    type: 'workshop'
-  },
-  {
-    id: '6',
-    title: 'Data Science Competition',
-    date: '2025-06-05',
-    description: 'Analyze real-world datasets and present insights to industry judges. Cash prizes for top performers.',
-    imageUrl: 'https://picsum.photos/300/169?random=6',
-    location: 'Library Building Auditorium',
-    type: 'competition'
-  },
-  {
-    id: '7',
-    title: 'Mobile App Development Workshop',
-    date: '2026-01-20',
-    description: 'Learn to build cross-platform mobile applications using React Native and Flutter.',
-    imageUrl: 'https://picsum.photos/300/169?random=7',
-    location: 'Innovation Studio',
-    type: 'workshop'
-  },
-  {
-    id: '8',
-    title: 'Alumni Tech Talk Series',
-    date: '2025-07-10',
-    description: 'Former BYTE members share their career journeys and insights from working at top tech companies.',
-    imageUrl: 'https://picsum.photos/300/169?random=8',
-    location: 'Virtual Event',
-    type: 'networking'
-  },
-  {
-    id: '9',
-    title: 'Blockchain & Cryptocurrency Workshop',
-    date: '2025-06-20',
-    description: 'Deep dive into blockchain technology and cryptocurrency development with hands-on smart contract coding.',
-    imageUrl: 'https://picsum.photos/300/169?random=9',
-    location: 'Business Building Room 115',
-    type: 'workshop'
-  }
+  
+  
 ];

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { InfoCard as InfoCardType } from '@/data/aboutData'
+import { InfoCard as InfoCardType } from './About'
 import { BuildProjectsIcon, LearnByDoingIcon, LeadershipIcon, CommunityIcon } from '@/components/icons/AboutIcons'
 
 interface InfoCardProps {

@@ -26,6 +26,10 @@ export default function SliderSection({
     return childrenArray.slice(startIndex, endIndex)
   }
 
+  const isLastPage = currentPage === totalPages - 1
+  const currentPageItemCount = getCurrentPageItems().length
+  const shouldCenter = isLastPage && currentPageItemCount < itemsPerPage
+
   const nextPage = () => {
     setDirection(1)
     setCurrentPage((prev) => (prev + 1) % totalPages)
@@ -46,6 +50,11 @@ export default function SliderSection({
   }
 
   const gridCols = itemsPerPage === 2 ? 'md:grid-cols-2' : 'lg:grid-cols-4 md:grid-cols-2'
+
+  // Use grid with place-items-center for proper centering while maintaining card sizes
+  const layoutClass = shouldCenter
+    ? `grid grid-cols-1 ${gridCols} place-items-center`
+    : `grid grid-cols-1 ${gridCols}`
 
   return (
     <section className="py-20 bg-digital-abyss relative overflow-hidden">
@@ -99,7 +108,7 @@ export default function SliderSection({
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
               onDragEnd={handleDragEnd}
-              className={`grid grid-cols-1 ${gridCols} gap-6`}
+              className={`${layoutClass} gap-6`}
             >
               {getCurrentPageItems()}
             </motion.div>

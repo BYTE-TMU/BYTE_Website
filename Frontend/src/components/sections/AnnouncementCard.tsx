@@ -9,47 +9,49 @@ interface AnnouncementCardProps {
   imageUrl?: string
   buttonText?: string
   onButtonClick?: () => void
+  isPlaceholder?: boolean
 }
 
-export default function AnnouncementCard({ 
-  date, 
-  title, 
-  description, 
-  imageUrl, 
-  buttonText, 
-  onButtonClick 
+export default function AnnouncementCard({
+  date,
+  title,
+  description,
+  imageUrl,
+  buttonText,
+  onButtonClick,
+  isPlaceholder = false
 }: AnnouncementCardProps) {
-  const showButton = buttonText && onButtonClick
+  const showButton = buttonText && onButtonClick && !isPlaceholder
 
   return (
     <motion.div
-      className="relative"
+      className={`relative ${isPlaceholder ? 'opacity-50' : ''}`}
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: isPlaceholder ? 0.5 : 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: isPlaceholder ? 0 : -5 }}
     >
-      <div 
+      <div
         className="absolute inset-0"
-        style={{ 
-          backgroundColor: '#48F5FE',
+        style={{
+          backgroundColor: isPlaceholder ? '#6B7280' : '#48F5FE',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
         }}
       />
-      
-      <div 
+
+      <div
         className="relative p-6 m-0.5 flex flex-col h-full"
         style={{
-          backgroundColor: '#4C5EF6',
+          backgroundColor: isPlaceholder ? '#374151' : '#4C5EF6',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
         }}
       >
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium" style={{ color: '#48f5FE' }}>
+          <p className="text-sm font-medium" style={{ color: isPlaceholder ? '#9CA3AF' : '#48f5FE' }}>
             {date}
           </p>
-          
+
           {showButton && (
             <ActionBtn
               text={buttonText}
@@ -60,11 +62,11 @@ export default function AnnouncementCard({
           )}
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-3">
+        <h3 className={`text-xl font-bold mb-3 ${isPlaceholder ? 'text-gray-400' : 'text-white'}`}>
           {title}
         </h3>
 
-        <p className="text-white/80 text-sm leading-relaxed mb-6 flex-grow">
+        <p className={`text-sm leading-relaxed mb-6 flex-grow ${isPlaceholder ? 'text-gray-500' : 'text-white/80'}`}>
           {description}
         </p>
 
