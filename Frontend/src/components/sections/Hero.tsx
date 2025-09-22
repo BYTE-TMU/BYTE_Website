@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import GridPulseBackground from '../backgrounds/GridPulseBackground'
 
 const heroData = {
   mainText: "Build Your Technical Experience",
@@ -11,13 +12,8 @@ const heroData = {
 }
 
 export default function Hero() {
-  const [logoLoaded, setLogoLoaded] = useState(false)
   const [displayText, setDisplayText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    setLogoLoaded(true)
-  }, [])
 
   useEffect(() => {
     if (currentIndex < heroData.mainText.length) {
@@ -73,7 +69,7 @@ export default function Hero() {
   }
 
   return (
-    <motion.section 
+    <motion.section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       variants={containerVariants}
       initial="hidden"
@@ -81,6 +77,7 @@ export default function Hero() {
       id="home"
     >
       <div className="absolute inset-0 z-0">
+        <GridPulseBackground />
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-[#48F5FE]/5 to-transparent" />
       </div>
 

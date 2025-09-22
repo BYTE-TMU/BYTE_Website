@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
@@ -28,19 +28,21 @@ function ScrollToHash() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-digital-abyss text-ghost-white">
-        <ScrollToHash />
-        <Navigation />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/support" element={<Support />} />
-          </Routes>
-        </main>
-        <Footer />
+      <div className="min-h-screen bg-digital-abyss text-ghost-white relative">
+        <div className="relative z-10">
+          <ScrollToHash />
+          <Navigation />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/support" element={<Support />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </div>
     </Router>
   )
