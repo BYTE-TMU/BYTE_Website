@@ -9,44 +9,30 @@ export interface Announcement {
 export const announcementsData: Announcement[] = [
   {
     id: "ann-1",
-    date: "Dec 15, 2024",
-    title: "BYTE Winter Break Update",
-    description: "Important updates for BYTE members during winter break and what to expect for the upcoming semester.",
+    date: "Sep 12, 2025",
+    title: "Join Us at the BYTE Launch Event!",
+    description: "Don't miss our official launch event on September 19th! Meet the executive team, network with fellow AI enthusiasts, learn about our exciting projects including SecureBYTE, and discover how you can get involved in our student-led AI organization.",
     imageUrl: "https://picsum.photos/320/180?random=1"
   },
   {
-    id: "ann-2", 
-    date: "Nov 28, 2024",
-    title: "New Partnership Announcement",
-    description: "We're excited to announce our new partnership with leading tech companies to provide better opportunities for our members.",
+    id: "ann-2",
+    date: "Aug 28, 2025",
+    title: "Find BYTE at the TMSU Campus Group Fair",
+    description: "Visit our table at the TMSU Campus Group Fair on September 4th! Learn about our hands-on approach to AI development, our open-source projects, and how you can be part of TMU's premier AI student organization.",
     imageUrl: "https://picsum.photos/320/180?random=2"
   },
   {
     id: "ann-3",
-    date: "Nov 10, 2024",
-    title: "BYTE Scholarship Program Launch",
-    description: "Introducing our new scholarship program to support aspiring developers in their educational journey.",
+    date: "Aug 18, 2025",
+    title: "Meet BYTE at the USSTM Involvement Fair",
+    description: "Stop by our table at the USSTM Involvement Fair on August 25th! Discover what BYTE is all about - we're a student-led AI organization focused on building real-world projects and gaining hands-on experience in artificial intelligence.",
     imageUrl: "https://picsum.photos/320/180?random=3"
   },
   {
     id: "ann-4",
-    date: "Oct 22, 2024",
-    title: "Open Source Initiative",
-    description: "BYTE is launching a new open source initiative to contribute to the developer community and create impactful projects.",
+    date: "Jun 9, 2025",
+    title: "Welcome to BYTE!",
+    description: "BYTE is a student-led, open-source AI organization at Toronto Metropolitan University. We're like a startup within a university where students don't just learn about AI - they build it through collaborative, real-world projects.",
     imageUrl: "https://picsum.photos/320/180?random=4"
-  },
-  {
-    id: "ann-5",
-    date: "Oct 5, 2024",
-    title: "Member Spotlight Series",
-    description: "Starting our monthly member spotlight series to showcase the amazing work and achievements of our community.",
-    imageUrl: "https://picsum.photos/320/180?random=5"
-  },
-  {
-    id: "ann-6",
-    date: "Sep 20, 2024",
-    title: "Fall Semester Kickoff",
-    description: "Join us for the official start of our fall semester activities with exciting new workshops and networking events.",
-    imageUrl: "https://picsum.photos/320/180?random=6"
   }
 ]

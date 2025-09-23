@@ -20,56 +20,62 @@ export const eventsData: Event[] = [
   // Past Events (before Sept 22, 2025)
   {
     id: 'past-1',
-    title: 'BYTE Kick-off 2025',
-    date: '2025-01-25',
-    description: 'Get to know BYTE, our team and how you can get involved in our exciting new year initiatives.',
+    title: 'USSTM Involvement Fair',
+    date: '2025-08-25',
+    description: 'BYTE\'s first tabling event to inform students about our AI-focused student organization and gain interest from potential members.',
     imageUrl: 'https://picsum.photos/320/180?random=10',
-    location: 'TMU Student Learning Centre',
-    type: 'social',
-    recapUrl: 'https://byte.org/recaps/kickoff-2025',
+    location: 'TMU Student Centre',
+    type: 'networking',
+    recapUrl: 'https://byte.org/recaps/usstm-fair-2025',
     recap: {
-      summary: 'Our 2025 kick-off event was a huge success! Over 200 students attended to learn about BYTE\'s mission and upcoming projects. We introduced our new SecureBYTE initiative and welcomed dozens of new members to our community. The event featured networking sessions, project demos, and an exciting roadmap presentation for the year ahead.',
+      summary: 'Our debut at the USSTM Involvement Fair was a great success! We introduced BYTE to the TMU community, explaining our mission as a student-led, open-source AI organization. Many students showed interest in our hands-on approach to AI development and our upcoming SecureBYTE project. We collected contact information from over 50 interested students.',
       images: [
-        'https://picsum.photos/800/600?random=kickoff1',
-        'https://picsum.photos/800/600?random=kickoff2',
-        'https://picsum.photos/800/600?random=kickoff3',
-        'https://picsum.photos/800/600?random=kickoff4',
-        'https://picsum.photos/800/600?random=kickoff5'
+        'https://picsum.photos/800/600?random=usstm1',
+        'https://picsum.photos/800/600?random=usstm2',
+        'https://picsum.photos/800/600?random=usstm3'
       ]
     }
   },
   {
     id: 'past-2',
-    title: 'React Workshop Series',
-    date: '2025-02-08',
-    description: 'Learn modern React development from the basics to advanced concepts in our comprehensive workshop series.',
+    title: 'TMSU Campus Group Fair',
+    date: '2025-09-04',
+    description: 'Another tabling opportunity to showcase BYTE and connect with students interested in AI development and open-source projects.',
     imageUrl: 'https://picsum.photos/320/180?random=11',
-    location: 'Engineering Building Room 302',
-    type: 'workshop',
-    recapUrl: 'https://byte.org/recaps/react-workshop-2025',
+    location: 'TMU Quad',
+    type: 'networking',
+    recapUrl: 'https://byte.org/recaps/tmsu-fair-2025',
     recap: {
-      summary: 'Our React workshop series exceeded expectations with 150+ participants across three sessions. Students built real-world applications, learned modern React patterns including hooks and context, and worked on collaborative projects. Many participants continued to contribute to our open-source projects after the workshop.',
+      summary: 'The TMSU Campus Group Fair provided another excellent opportunity to expand our reach. We had engaging conversations with students from various programs about AI, machine learning, and our collaborative project approach. The event helped us build momentum leading up to our official launch event.',
       images: [
-        'https://picsum.photos/800/600?random=react1',
-        'https://picsum.photos/800/600?random=react2',
-        'https://picsum.photos/800/600?random=react3',
-        'https://picsum.photos/800/600?random=react4'
+        'https://picsum.photos/800/600?random=tmsu1',
+        'https://picsum.photos/800/600?random=tmsu2',
+        'https://picsum.photos/800/600?random=tmsu3',
+        'https://picsum.photos/800/600?random=tmsu4'
       ]
     }
   },
-  
+  {
+    id: 'past-3',
+    title: 'BYTE Launch Event',
+    date: '2025-09-19',
+    description: 'The official launch event for BYTE! Join us to learn about our organization, meet the executive team, network with fellow AI enthusiasts, and discover how you can get involved in our projects.',
+    imageUrl: 'https://picsum.photos/320/180?random=12',
+    location: 'TMU Student Learning Centre',
+    type: 'social',
+    recapUrl: 'https://byte.org/recaps/launch-event-2025',
+    recap: {
+      summary: 'Our official launch event exceeded all expectations! Over 120 students attended to learn about BYTE\'s mission and vision. We presented our SecureBYTE project, conducted networking sessions, and welcomed many new members to our community. The event featured presentations from our executive team, interactive demos, and an exciting roadmap for the semester ahead.',
+      images: [
+        'https://picsum.photos/800/600?random=launch1',
+        'https://picsum.photos/800/600?random=launch2',
+        'https://picsum.photos/800/600?random=launch3',
+        'https://picsum.photos/800/600?random=launch4',
+        'https://picsum.photos/800/600?random=launch5'
+      ]
+    }
+  },
 
   // Upcoming Events (after Sept 22, 2025)
-  {
-    id: 'upcoming-1',
-    title: 'AI Workshop Series: Introduction to Machine Learning',
-    date: '2025-10-05',
-    description: 'A comprehensive workshop covering the fundamentals of machine learning, including hands-on coding exercises with Python and TensorFlow.',
-    imageUrl: 'https://picsum.photos/300/169?random=2',
-    location: 'Engineering Building Room 302',
-    type: 'workshop',
-    registrationUrl: 'https://forms.google.com/ml-workshop-2025'
-  },
-  
-  
+
 ];

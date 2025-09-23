@@ -7,6 +7,12 @@ interface ContactFormData {
   message: string
 }
 
+interface ContactPayload {
+  name: string
+  email: string
+  message: string
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -15,21 +21,55 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
+  const APPS_SCRIPT_URL = import.meta.env.VITE_CONTACT_URL
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(null)
+
+    if (!APPS_SCRIPT_URL) {
+      setSubmitError('Contact form is not configured. Please try again later.')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
-      // TODO: Replace with actual API call when backend is implemented
-      await new Promise(resolve => setTimeout(resolve, 2000)) // Mock delay
+      // Use FormData for better compatibility with Google Apps Script
+      const formDataPayload = new FormData()
+      formDataPayload.append('name', formData.name.trim())
+      formDataPayload.append('email', formData.email.trim())
+      formDataPayload.append('message', formData.message.trim())
+
+      console.log('Sending form data:', {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim()
+      })
+
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: formDataPayload,
+        mode: 'no-cors' // Google Apps Script requires no-cors mode
+      })
+
+      console.log('Response:', response)
+      // Since we're using no-cors mode, we can't read the response
+      // We'll assume success if no error is thrown
       setIsSubmitted(true)
       setFormData({ name: '', email: '', message: '' })
+
     } catch (error) {
       console.error('Failed to send message:', error)
+      setSubmitError('Failed to send message. Please try again or contact us directly.')
     } finally {
       setIsSubmitting(false)
-      setTimeout(() => setIsSubmitted(false), 3000)
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setSubmitError(null)
+      }, 5000)
     }
   }
 
@@ -168,12 +208,27 @@ export default function Contact() {
                     />
                   </div>
 
+                  {submitError && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-red-500/10 border border-red-500/20 text-red-600 text-sm font-tech-mono rounded"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>{submitError}</span>
+                      </div>
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
                     disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
                     className="w-full px-6 py-3 font-tech-mono font-bold text-sm transition-all duration-200 disabled:opacity-50 text-digital-abyss flex items-center justify-center space-x-2"
                     style={{
-                      background: isSubmitted ? 'linear-gradient(to bottom, #CEFE00, #2B9398)' : 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
+                      background: isSubmitted ? 'linear-gradient(to bottom, #CEFE00, #2B9398)' : submitError ? 'linear-gradient(to bottom, #EF4444, #DC2626)' : 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
                       clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
                     }}
                     whileHover={{ scale: 1.02, y: -2 }}
@@ -196,6 +251,13 @@ export default function Contact() {
                           className="w-5 h-5 border-2 border-digital-abyss border-t-transparent rounded-full"
                         />
                         <span>Sending...</span>
+                      </>
+                    ) : submitError ? (
+                      <>
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Try Again</span>
                       </>
                     ) : (
                       <>

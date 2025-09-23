@@ -20,10 +20,10 @@ export default function AboutPage() {
         showPrototypes={true}
       />
       
-      <TeamSection 
+      {/* <TeamSection 
         title="PROJECT CONTRIBUTORS"
         teamData={projectContributorsData}
-      />
+      /> */}
       
       <Join />
     </>
