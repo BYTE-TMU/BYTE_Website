@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion'
 import { projectsData } from '@/data/projectsData'
 import ProjectCard from './ProjectCard'
@@ -20,7 +20,7 @@ export default function Projects() {
     setCurrentIndex((prev) => (prev - 1 + totalProjects) % totalProjects)
   }
 
-  const handleDragEnd = (event: any, info: PanInfo) => {
+  const handleDragEnd = (_: any, info: PanInfo) => {
     const swipeThreshold = 50
     if (info.offset.x > swipeThreshold) {
       prevProject()

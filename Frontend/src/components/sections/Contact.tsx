@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 interface ContactFormData {
@@ -7,11 +7,6 @@ interface ContactFormData {
   message: string
 }
 
-interface ContactPayload {
-  name: string
-  email: string
-  message: string
-}
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({

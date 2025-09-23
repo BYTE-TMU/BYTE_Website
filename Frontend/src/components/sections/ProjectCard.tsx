@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { motion } from 'framer-motion'
 import type { PanInfo } from 'framer-motion'
 import { Project } from '@/data/projectsData'

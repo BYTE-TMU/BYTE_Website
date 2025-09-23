@@ -1,4 +1,4 @@
-import React from 'react'
+
 import PageTitle from '@/components/layout/PageTitle'
 import FAQSection from '@/components/sections/FAQSection'
 import Contact from '@/components/sections/Contact'

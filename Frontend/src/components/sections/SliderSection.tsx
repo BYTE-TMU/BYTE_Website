@@ -1,4 +1,4 @@
-import React, { useState, Children } from 'react'
+import { useState, Children } from 'react'
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion'
 
 interface SliderSectionProps {
@@ -40,7 +40,7 @@ export default function SliderSection({
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)
   }
 
-  const handleDragEnd = (event: any, info: PanInfo) => {
+  const handleDragEnd = (_: any, info: PanInfo) => {
     const swipeThreshold = 50
     if (info.offset.x > swipeThreshold) {
       prevPage()
@@ -88,18 +88,18 @@ export default function SliderSection({
             <motion.div
               key={currentPage}
               custom={direction}
-              initial={(custom) => ({
-                x: custom > 0 ? 1000 : -1000,
+              initial={{
+                x: 1000,
                 opacity: 0
-              })}
+              }}
               animate={{
                 x: 0,
                 opacity: 1
               }}
-              exit={(custom) => ({
-                x: custom < 0 ? 1000 : -1000,
+              exit={{
+                x: -1000,
                 opacity: 0
-              })}
+              }}
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }

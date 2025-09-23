@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { eventsData, Event } from '@/data/eventsData'
 import FeaturedEventCard from './FeaturedEventCard'
 import EventGridCard from './EventGridCard'
 
 export default function Events() {
-  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([])
-  const [pastEvents, setPastEvents] = useState<Event[]>([])
   const [featuredEvent, setFeaturedEvent] = useState<Event | null>(null)
   const [gridEvents, setGridEvents] = useState<Event[]>([])
 
@@ -28,9 +26,6 @@ export default function Events() {
   useEffect(() => {
     const upcoming = getUpcomingEvents()
     const past = getPastEvents()
-
-    setUpcomingEvents(upcoming)
-    setPastEvents(past)
 
     // Set featured event or create placeholder
     let featured: Event | null = null

@@ -2,7 +2,7 @@ import PageTitle from '@/components/layout/PageTitle'
 import Mission from '@/components/sections/Mission'
 import Join from '@/components/sections/Join'
 import TeamSection from '@/components/team/TeamSection'
-import { meetTheTeamData, projectContributorsData } from '@/data/teamData'
+import { meetTheTeamData } from '@/data/teamData'
 
 export default function AboutPage() {
   return (

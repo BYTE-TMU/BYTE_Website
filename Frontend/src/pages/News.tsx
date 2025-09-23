@@ -1,4 +1,4 @@
-import React from 'react'
+
 import PageTitle from '@/components/layout/PageTitle'
 import SliderSection from '@/components/sections/SliderSection'
 import AnnouncementCard from '@/components/sections/AnnouncementCard'

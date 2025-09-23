@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import * as d3 from 'd3'
 import { Member } from '../../data/teamData'
@@ -34,46 +34,6 @@ const transformMemberData = (members: Member[]): TeamNetworkMember[] => {
   }))
 }
 
-// Generate realistic connections based on hierarchy
-const generateConnections = (member: Member, allMembers: Member[]): string[] => {
-  const connections: string[] = []
-  
-  // Presidents connect to VPs and heads
-  if (member.position === 'President') {
-    allMembers.forEach(m => {
-      if (m.position.includes('VP') || m.position.includes('Chief') || m.position.includes('Head')) {
-        connections.push(m.id)
-      }
-    })
-  }
-  
-  // VPs and heads connect to their directors
-  if (member.position.includes('VP') || member.position.includes('Head') || member.position.includes('Chief')) {
-    allMembers.forEach(m => {
-      if (m.position.includes('Director') || m.position.includes('Lead')) {
-        connections.push(m.id)
-      }
-    })
-    // Also connect back to president
-    const president = allMembers.find(m => m.position === 'President')
-    if (president) connections.push(president.id)
-  }
-  
-  // Directors connect to engineers in their domain
-  if (member.position.includes('Director')) {
-    const domain = member.position.includes('Frontend') ? 'Frontend' :
-                  member.position.includes('Backend') ? 'Backend' :
-                  member.position.includes('AI') ? 'AI/ML' : ''
-    
-    allMembers.forEach(m => {
-      if (m.position.includes('Engineer') && m.position.includes(domain)) {
-        connections.push(m.id)
-      }
-    })
-  }
-  
-  return connections
-}
 
 export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps) {
   const svgRef = useRef<SVGSVGElement>(null)
@@ -157,11 +117,11 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
     treeLayout(root)
 
     // Create links
-    const linkElements = svg.append('g')
+    svg.append('g')
       .selectAll('path')
       .data(root.links())
       .enter().append('path')
-      .attr('d', d3.linkVertical()
+      .attr('d', d3.linkVertical<any, any>()
         .x((d: any) => d.x + 50)
         .y((d: any) => d.y + 50))
       .attr('fill', 'none')
@@ -176,7 +136,7 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
       .enter().append('g')
       .attr('transform', (d: any) => `translate(${d.x + 50},${d.y + 50})`)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => {
+      .on('click', (_, d) => {
         if (d.data.id) {
           const originalMember = members.find(m => m.id === d.data.id)
           if (originalMember) {

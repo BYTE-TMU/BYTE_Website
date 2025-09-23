@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { motion } from 'framer-motion'
 import { FooterSection as FooterSectionType } from './Footer'
 import FooterLink from './FooterLink'
