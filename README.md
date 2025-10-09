@@ -70,6 +70,7 @@ The application will be available at `http://localhost:5173`
 
 ### Current Sprint
 
+- [ ] Implement Firebase NoSQL database
 - [ ] Implement Flask/FastAPI backend infrastructure
 - [ ] Build admin panel frontend sister website
 
