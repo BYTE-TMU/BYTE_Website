@@ -70,12 +70,11 @@ The application will be available at `http://localhost:5173`
 
 ### Current Sprint
 
-- [ ] Implement consistent background styling across all pages
+- [ ] Implement Flask/FastAPI backend infrastructure
+- [ ] Build admin panel frontend sister website
 
 ### Upcoming Development
 
-- [ ] Implement Flask/FastAPI backend infrastructure
-- [ ] Build admin panel frontend interface
 - [ ] Establish backend-frontend integration
 - [ ] Optimize responsive design for mobile devices of all sizes
 
@@ -88,6 +87,7 @@ The application will be available at `http://localhost:5173`
 - [x] Create "Project Contributors" component for About page
 - [x] Refine Hero section to match Figma design specifications
 - [x] Update Team section component to display small teams better, and add whole team tab
+- [x] Implement consistent background styling across all pages
 
 ## Design System
 
