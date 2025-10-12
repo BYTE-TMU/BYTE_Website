@@ -65,7 +65,7 @@ const allTeamMembers: Member[] = [
     position: 'VP of Events',
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
-    categories: ['Leadership', 'Strategic Team'],
+    categories: [ 'Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
   },
   {
@@ -74,7 +74,7 @@ const allTeamMembers: Member[] = [
     position: 'VP of Community',
     profilePicUrl: 'https://picsum.photos/200/200?random=23',
     rank: 80,
-    categories: ['Leadership', 'Strategic Team'],
+    categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'community-assoc-001', 'community-assoc-002']
   },
   {
@@ -83,7 +83,7 @@ const allTeamMembers: Member[] = [
     position: 'VP of Marketing',
     profilePicUrl: 'https://picsum.photos/200/200?random=24',
     rank: 80,
-    categories: ['Leadership', 'Strategic Team'],
+    categories: [ 'Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'designer-001']
   },
   {
@@ -92,7 +92,7 @@ const allTeamMembers: Member[] = [
     position: 'VP of Technology',
     profilePicUrl: 'https://picsum.photos/200/200?random=3',
     rank: 80,
-    categories: ['Leadership', 'Technical Team'],
+    categories: ['Technical Team'],
     connections: ['pres-001', 'head-tech-001', 'dir-frontend-001', 'dir-ai-001', 'dir-backend-001']
   },
 

@@ -83,7 +83,7 @@ export default function TeamCardGrid({ members, onMemberClick }: TeamCardGridPro
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-2 mt-auto">
+            {/* <div className="flex gap-2 mt-auto">
               <button 
                 className="flex-1 px-3 py-2 font-tech-mono text-xs text-white border border-[#48F5FE] hover:bg-[#48F5FE] hover:text-black transition-all duration-200 group-hover:border-[#CEFE00] group-hover:hover:bg-[#CEFE00]"
                 style={{
@@ -110,7 +110,7 @@ export default function TeamCardGrid({ members, onMemberClick }: TeamCardGridPro
               >
                 Portfolio
               </button>
-            </div>
+            </div> */}
 
             {/* Hover glow effect */}
             <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
