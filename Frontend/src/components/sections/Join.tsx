@@ -11,7 +11,7 @@ const joinData = {
     },
     form: {
       text: "Fill out form",
-      url: "#join-form"
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSdt0k68McJahUKvRU7iIog92G-tq6UYU7rnVL_I_zsaB0AKUw/viewform"
     }
   },
   additionalInfo: "Join our community of innovators, developers, and tech enthusiasts at Toronto Metropolitan University"

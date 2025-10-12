@@ -1,0 +1,19 @@
+# Flask web framework
+Flask==3.0.0
+flask-cors==4.0.0
+
+# Supabase Python client (updated to latest stable version)
+supabase>=2.4.0,<3.0.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Note: PyJWT and httpx are installed automatically by supabase
+# with compatible versions. Do not specify them separately.
+
+# PostgreSQL adapter (if needed for direct database access)
+# psycopg2-binary==2.9.9
+
+# Development dependencies (optional)
+# pytest==7.4.3
+# pytest-flask==1.3.0

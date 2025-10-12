@@ -65,7 +65,7 @@ export const eventsData: Event[] = [
     type: 'social',
     recapUrl: 'https://byte.org/recaps/launch-event-2025',
     recap: {
-      summary: 'Our official launch event exceeded all expectations! Over 120 students attended to learn about BYTE\'s mission and vision. We presented our SecureBYTE project, conducted networking sessions, and welcomed many new members to our community. The event featured presentations from our executive team, interactive demos, and an exciting roadmap for the semester ahead.',
+      summary: 'Our official launch event exceeded all expectations! Students attended to learn about BYTE\'s mission and vision. We presented our SecureBYTE project, conducted networking sessions, and welcomed many new members to our community. The event featured presentations from our executive team, interactive demos, and an exciting roadmap for the semester ahead.',
       images: [
         'https://picsum.photos/800/600?random=launch1',
         'https://picsum.photos/800/600?random=launch2',

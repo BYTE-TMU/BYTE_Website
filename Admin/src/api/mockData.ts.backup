@@ -1,0 +1,107 @@
+// Mock data store that simulates a backend database
+// This uses localStorage for persistence during development
+// Can be easily swapped with real API calls later
+
+import type { TeamMember, Project, Event, Announcement, User } from '../types'
+
+// Storage keys
+const STORAGE_KEYS = {
+  TEAM_MEMBERS: 'admin_team_members',
+  PROJECTS: 'admin_projects',
+  EVENTS: 'admin_events',
+  ANNOUNCEMENTS: 'admin_announcements',
+  USERS: 'admin_users',
+  CURRENT_USER: 'admin_current_user',
+}
+
+// Initialize data from Frontend mock data or localStorage
+function getStoredData<T>(key: string, defaultData: T[]): T[] {
+  const stored = localStorage.getItem(key)
+  return stored ? JSON.parse(stored) : defaultData
+}
+
+function setStoredData<T>(key: string, data: T[]): void {
+  localStorage.setItem(key, JSON.stringify(data))
+}
+
+// Import initial data from Frontend (these would normally be API fetches)
+// For now, we'll use empty arrays and you can seed them via the Admin UI
+const initialData = {
+  teamMembers: [] as TeamMember[],
+  projects: [] as Project[],
+  events: [] as Event[],
+  announcements: [] as Announcement[],
+  users: [
+    {
+      uid: 'owner-001',
+      username: 'admin',
+      email: 'admin@byte.org',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      role: 'owner' as const,
+      is_admin: true,
+      is_owner: true,
+      status: 'active' as const,
+      email_verified: true,
+    },
+  ] as User[],
+}
+
+// Mock database
+export const mockDB = {
+  teamMembers: getStoredData(STORAGE_KEYS.TEAM_MEMBERS, initialData.teamMembers),
+  projects: getStoredData(STORAGE_KEYS.PROJECTS, initialData.projects),
+  events: getStoredData(STORAGE_KEYS.EVENTS, initialData.events),
+  announcements: getStoredData(STORAGE_KEYS.ANNOUNCEMENTS, initialData.announcements),
+  users: getStoredData(STORAGE_KEYS.USERS, initialData.users),
+}
+
+// Persistence helpers
+export function persistTeamMembers(data: TeamMember[]) {
+  mockDB.teamMembers = data
+  setStoredData(STORAGE_KEYS.TEAM_MEMBERS, data)
+}
+
+export function persistProjects(data: Project[]) {
+  mockDB.projects = data
+  setStoredData(STORAGE_KEYS.PROJECTS, data)
+}
+
+export function persistEvents(data: Event[]) {
+  mockDB.events = data
+  setStoredData(STORAGE_KEYS.EVENTS, data)
+}
+
+export function persistAnnouncements(data: Announcement[]) {
+  mockDB.announcements = data
+  setStoredData(STORAGE_KEYS.ANNOUNCEMENTS, data)
+}
+
+export function persistUsers(data: User[]) {
+  mockDB.users = data
+  setStoredData(STORAGE_KEYS.USERS, data)
+}
+
+// Current user session
+export function setCurrentUser(user: User | null) {
+  if (user) {
+    localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user))
+  } else {
+    localStorage.removeItem(STORAGE_KEYS.CURRENT_USER)
+  }
+}
+
+export function getCurrentUser(): User | null {
+  const stored = localStorage.getItem(STORAGE_KEYS.CURRENT_USER)
+  return stored ? JSON.parse(stored) : null
+}
+
+// Reset all data (useful for development)
+export function resetMockData() {
+  localStorage.clear()
+  mockDB.teamMembers = []
+  mockDB.projects = []
+  mockDB.events = []
+  mockDB.announcements = []
+  mockDB.users = initialData.users
+}

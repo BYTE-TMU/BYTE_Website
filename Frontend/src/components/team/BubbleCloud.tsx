@@ -33,32 +33,41 @@ const calculateBubblePositions = (members: Member[], containerWidth: number, con
   
   const centerX = containerWidth / 2
   const centerY = containerHeight / 2
-  const minGap = 4 // Minimum gap between bubbles
-  
+  const minGap = 2 // Reduced gap for tighter clustering
+  const ovalCompressionFactor = 0.75 // Y-axis compression for oval shape
+
   // Helper function to check if position is valid (no overlaps)
-  const isValidPosition = (x: number, y: number, size: number): boolean => {
+  // Now accounts for oval compression in the validation
+  const isValidPosition = (x: number, y: number, size: number, applyOvalCompression = true): boolean => {
     const radius = size / 2
-    const padding = 15
-    
+    const padding = 10
+
+    // Apply oval compression to test position if needed
+    let testY = y
+    if (applyOvalCompression) {
+      const deltaY = (y + radius) - centerY
+      testY = centerY + deltaY * ovalCompressionFactor - radius
+    }
+
     // Check bounds
-    if (x < padding || y < padding || 
-        x + size > containerWidth - padding || 
-        y + size > containerHeight - padding) {
+    if (x < padding || testY < padding ||
+        x + size > containerWidth - padding ||
+        testY + size > containerHeight - padding) {
       return false
     }
-    
+
     // Check clearance from all existing bubbles
     for (const existing of positions) {
       const dx = (x + radius) - (existing.x + existing.size / 2)
-      const dy = (y + radius) - (existing.y + existing.size / 2)
+      const dy = (testY + radius) - (existing.y + existing.size / 2)
       const distanceBetween = Math.sqrt(dx * dx + dy * dy)
       const requiredDistance = radius + existing.size / 2 + minGap
-      
+
       if (distanceBetween < requiredDistance) {
         return false
       }
     }
-    
+
     return true
   }
   
@@ -73,88 +82,83 @@ const calculateBubblePositions = (members: Member[], containerWidth: number, con
     
     if (i === 0) {
       // First (highest rank) bubble goes at exact center
+      // Apply oval compression immediately
+      const deltaY = bestY + radius - centerY
+      bestY = centerY + deltaY * ovalCompressionFactor - radius
       positions.push({ x: bestX, y: bestY, size, member })
       continue
     }
-    
-    // Comprehensive search with multiple strategies
-    const maxSearchDistance = Math.min(containerWidth, containerHeight) * 0.48
-    const strategies = [
-      { distanceStep: 4, angleStep: Math.PI / 32, startDistance: size * 0.7 },
-      { distanceStep: 6, angleStep: Math.PI / 24, startDistance: size * 0.9 },
-      { distanceStep: 8, angleStep: Math.PI / 16, startDistance: size * 1.1 }
-    ]
-    
-    // Try each search strategy
-    for (const strategy of strategies) {
-      if (found) break
-      
-      const startDistance = Math.max(strategy.startDistance, (i - 1) * 8)
-      
-      for (let distance = startDistance; distance < maxSearchDistance && !found; distance += strategy.distanceStep) {
-        const angleCount = Math.ceil(2 * Math.PI / strategy.angleStep)
-        const baseAngleOffset = (i * Math.PI / 12) % (2 * Math.PI) // Varied start angle per bubble
-        
-        for (let angleIndex = 0; angleIndex < angleCount && !found; angleIndex++) {
-          const angle = baseAngleOffset + (angleIndex * strategy.angleStep)
-          const testX = centerX + Math.cos(angle) * distance - radius
-          const testY = centerY + Math.sin(angle) * distance - radius
-          
-          if (isValidPosition(testX, testY, size)) {
-            bestX = testX
-            bestY = testY
-            found = true
-          }
-        }
+
+    // Improved spiral search with guaranteed placement
+    // Search outward from center in a continuous spiral pattern
+    const maxSearchDistance = Math.max(containerWidth, containerHeight) * 0.8 // Increased search area
+
+    // Fine-grained spiral search
+    let distance = size * 0.6 // Start close to center
+    const angleIncrement = Math.PI / 18 // 36 angles per full rotation (10 degrees)
+    const distanceIncrement = 2 // Small steps for thorough search
+
+    let angle = (i * Math.PI / 7) % (2 * Math.PI) // Varied start angle per bubble
+    let spiralIterations = 0
+    const maxIterations = 5000 // Safety limit
+
+    while (!found && distance < maxSearchDistance && spiralIterations < maxIterations) {
+      // Test position at current angle and distance
+      const testX = centerX + Math.cos(angle) * distance - radius
+      const testY = centerY + Math.sin(angle) * distance - radius
+
+      if (isValidPosition(testX, testY, size, true)) {
+        bestX = testX
+        // Apply oval compression
+        const deltaY = testY + radius - centerY
+        bestY = centerY + deltaY * ovalCompressionFactor - radius
+        found = true
+        break
       }
+
+      // Increment angle
+      angle += angleIncrement
+
+      // After full rotation, increase distance
+      if (angle >= 2 * Math.PI + (i * Math.PI / 7) % (2 * Math.PI)) {
+        distance += distanceIncrement
+        angle = (i * Math.PI / 7) % (2 * Math.PI) // Reset to start angle
+      }
+
+      spiralIterations++
     }
-    
-    // Final fallback: force placement in expanding spiral
+
+    // Emergency fallback: grid-based search if spiral fails
     if (!found) {
-      for (let spiralStep = 0; spiralStep < 200 && !found; spiralStep++) {
-        const spiralAngle = spiralStep * 0.5 // Gradual spiral
-        const spiralDistance = 40 + spiralStep * 8 // Expanding distance
-        const testX = centerX + Math.cos(spiralAngle) * spiralDistance - radius
-        const testY = centerY + Math.sin(spiralAngle) * spiralDistance - radius
-        
-        // Less strict bounds check for fallback
-        const padding = 5
-        if (testX >= padding && testY >= padding && 
-            testX + size <= containerWidth - padding && 
-            testY + size <= containerHeight - padding) {
-          
-          // Check for severe overlaps only (allow closer placement if needed)
-          let hasOverlap = false
-          for (const existing of positions) {
-            const dx = (testX + radius) - (existing.x + existing.size / 2)
-            const dy = (testY + radius) - (existing.y + existing.size / 2)
-            const distanceBetween = Math.sqrt(dx * dx + dy * dy)
-            const minRequiredDistance = radius + existing.size / 2 + 1 // Very minimal gap for fallback
-            
-            if (distanceBetween < minRequiredDistance) {
-              hasOverlap = true
-              break
+      const gridStep = 5
+      let searchRadius = size
+      const maxRadius = Math.max(containerWidth, containerHeight)
+
+      while (!found && searchRadius < maxRadius) {
+        for (let dx = -searchRadius; dx <= searchRadius && !found; dx += gridStep) {
+          for (let dy = -searchRadius; dy <= searchRadius && !found; dy += gridStep) {
+            const testX = centerX + dx - radius
+            const testY = centerY + dy - radius
+
+            // Only test positions roughly at current search radius
+            const distFromCenter = Math.sqrt(dx * dx + dy * dy)
+            if (Math.abs(distFromCenter - searchRadius) < gridStep * 2) {
+              if (isValidPosition(testX, testY, size, true)) {
+                bestX = testX
+                const deltaY = testY + radius - centerY
+                bestY = centerY + deltaY * ovalCompressionFactor - radius
+                found = true
+              }
             }
           }
-          
-          if (!hasOverlap) {
-            bestX = testX
-            bestY = testY
-            found = true
-          }
         }
+        searchRadius += size * 0.5
       }
     }
-    
+
     positions.push({ x: bestX, y: bestY, size, member })
   }
-  
-  // Apply oval transformation - compress Y coordinates
-  for (const pos of positions) {
-    const deltaY = pos.y - centerY
-    pos.y = centerY + deltaY * 0.75 // Compress Y by 25% to create oval shape
-  }
-  
+
   return positions
 }
 

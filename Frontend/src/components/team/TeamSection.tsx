@@ -22,8 +22,13 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
   const [activeTab, setActiveTab] = useState(0)
   const [selectedMember, setSelectedMember] = useState<Member | null>(null)
   
-  // Flatten all members for "All Members" tabs
-  const allMembers = teamData.flatMap(category => category.members)
+  // Flatten all members for "All Members" tabs and deduplicate by ID
+  const allMembers = Array.from(
+    new Map(
+      teamData.flatMap(category => category.members).map(member => [member.id, member])
+    ).values()
+  ).sort((a, b) => b.rank - a.rank) // Sort by rank descending
+
   const leadershipMembers = teamData.find(cat => cat.categoryName === 'Leadership')?.members || []
   
   // Configure tabs based on showPrototypes prop
@@ -31,27 +36,24 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
     // Prototype tabs first (only if enabled)
     ...(showPrototypes ? [
       {
-        name: 'All Members - Bubble',
+        name: 'All Members',
         type: 'bubble' as const,
         data: { categoryName: 'All Members', members: allMembers }
       },
       {
-        name: 'All Members - Network',
-        type: 'network' as const,
-        data: allMembers
-      },
-      {
-        name: 'Leadership - Cards',
+        name: 'Leadership',
         type: 'cards' as const,
         data: leadershipMembers
       }
     ] : []),
-    // Original tabs after prototypes
-    ...teamData.map(category => ({
-      name: category.categoryName,
-      type: 'bubble' as const,
-      data: category
-    }))
+    // Original tabs after prototypes (only Strategic Team and Technical Team)
+    ...teamData
+      .filter(category => category.categoryName === 'Strategic Team' || category.categoryName === 'Technical Team')
+      .map(category => ({
+        name: category.categoryName,
+        type: 'bubble' as const,
+        data: category
+      }))
   ]
   
   return (
