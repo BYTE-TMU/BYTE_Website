@@ -7,7 +7,7 @@ const joinData = {
   buttons: {
     discord: {
       text: "Join Discord",
-      url: "https://discord.gg/byte-community"
+      url: "https://discord.gg/Qj4gmd3g"
     },
     form: {
       text: "Fill out form",
