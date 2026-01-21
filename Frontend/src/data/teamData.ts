@@ -69,6 +69,15 @@ const allTeamMembers: Member[] = [
     connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
   },
   {
+    id: 'vp-finance-001',
+    name: 'Vashisht Pawa',
+    position: 'VP of Finance',
+    profilePicUrl: 'https://picsum.photos/200/200?random=4',
+    rank: 80,
+    categories: ['Strategic Team'],
+    connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002']
+  },
+  {
     id: 'vp-operations-001',
     name: 'Parth Patel',
     position: 'VP of Operations',
@@ -93,7 +102,7 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=24',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'designer-001']
+    connections: ['pres-001', 'head-strat-001', 'vp-marketing-001', 'vp-marketing-002', 'vp-marketing-003']
   },
   {
     id: 'vp-tech-001',
@@ -108,12 +117,30 @@ const allTeamMembers: Member[] = [
   // Strategic Team Members (not in Leadership)
   {
     id: 'events-assoc-001',
-    name: 'Rishita Patel',
-    position: 'Events Associate',
+    name: 'Shahd Alkadi',
+    position: 'Marketing Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=6',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-events-001']
+    connections: ['vp-marketing-001']
+  },
+  {
+    id: 'events-assoc-001',
+    name: 'Areej Shariq',
+    position: 'Marketing Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=6',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-marketing-002']
+  },
+  {
+    id: 'events-assoc-001',
+    name: 'Cerine Djerouni',
+    position: 'Marketing Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=6',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-marketing-003']
   },
   {
     id: 'events-assoc-002',
@@ -150,6 +177,24 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-community-001']
+  },
+  {
+    id: 'community-assoc-003',
+    name: 'Umar Muhammad',
+    position: 'Finance Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=26',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-finance-001']
+  },
+  {
+    id: 'community-assoc-003',
+    name: 'Angelina Tibayan',
+    position: 'Finance Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=26',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-finance-002']
   },
 
   // Technical Team Members (not in Leadership)
