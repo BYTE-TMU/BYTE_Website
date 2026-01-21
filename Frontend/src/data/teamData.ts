@@ -190,6 +190,24 @@ const allTeamMembers: Member[] = [
     connections: ['dir-frontend-001']
   },
   {
+    id: 'frontend-eng-003',
+    name: 'Anthony Ma',
+    position: 'Frontend Engineer',
+    profilePicUrl: 'https://picsum.photos/200/200?random=21',
+    rank: 50,
+    categories: ['Technical Team'],
+    connections: ['dir-frontend-001']
+  },
+  {
+    id: 'frontend-eng-003',
+    name: 'Stephen Nguyen',
+    position: 'Frontend Engineer',
+    profilePicUrl: 'https://picsum.photos/200/200?random=21',
+    rank: 50,
+    categories: ['Technical Team'],
+    connections: ['dir-frontend-001']
+  },
+  {
     id: 'aiml-eng-001',
     name: 'Nancy Maliackel',
     position: 'Director of AI/ML Engineering',

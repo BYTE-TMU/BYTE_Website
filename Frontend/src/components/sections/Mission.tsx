@@ -21,13 +21,13 @@ export default function Mission() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
+          <h2
             className="text-5xl lg:text-6xl font-orbitron font-black mb-8 text-transparent bg-clip-text"
             style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           >
             Our Mission
           </h2>
-          
+
           <p className="text-lg lg:text-xl text-ghost-white max-w-4xl mx-auto leading-relaxed">
             We exist to empower students to gain hands-on experience in real-world AI development by working collaboratively on projects that make a difference.
           </p>
@@ -52,7 +52,7 @@ export default function Mission() {
             >
               SecureBYTE is an open-source project that helps developers detect potential security flaws and logical issues in their code using traditional static code analysis and LLMs. The AI model then offers insights and suggests remediations directly on developers' code.
             </motion.p>
-            
+
             <motion.p
               className="text-ghost-white text-lg leading-relaxed"
               initial={{ opacity: 0, x: -30 }}
@@ -72,7 +72,7 @@ export default function Mission() {
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <img 
+            <img
               src="https://picsum.photos/600/350?random=20"
               alt="SecureBYTE project illustration"
               className="w-full h-full object-cover"

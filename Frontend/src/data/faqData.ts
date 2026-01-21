@@ -21,7 +21,7 @@ export const faqData: FAQ[] = [
   {
     id: 3,
     question: "What types of projects does BYTE work on?",
-    answer: "We focus on AI applications that solve real-world problems. Our flagship project SecureBYTE uses AI for code security analysis. We also work on machine learning models, natural language processing tools, computer vision applications, and other innovative AI solutions that benefit the developer community.",
+    answer: "We focus on AI applications that solve real-world problems. Our recent flagship project SecureBYTE uses AI for code security analysis. We also work on machine learning models, natural language processing tools, computer vision applications, and other innovative AI solutions that benefit the developer community.",
     display_order: 3
   },
   {

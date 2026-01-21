@@ -18,7 +18,6 @@ export const projectsData: Project[] = [
     status: 'Completed',
     description: 'A Python-based AI vulnerability scanner that integrates static analysis and LLMs to identify security flaws and logical issues. It combines traditional analysis with natural language reasoning to provide insights, suggest remediations, and generate automated test cases.',
     technologies: ['Python', 'Flask', 'React', 'JavaScript', 'TailwindCSS', 'Firebase'],
-    liveUrl: 'https://securebyte.vercel.app/',
     githubUrl: 'https://github.com/byte-org/securebyte',
     videoUrl: '/videos/securebyte.mp4',
     type: 'current'

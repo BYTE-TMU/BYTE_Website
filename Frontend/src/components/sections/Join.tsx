@@ -10,8 +10,8 @@ const joinData = {
       url: "https://discord.gg/6Xxyk9u4uU"
     },
     form: {
-      text: "Fill out form",
-      url: "https://docs.google.com/forms/d/e/1FAIpQLSdt0k68McJahUKvRU7iIog92G-tq6UYU7rnVL_I_zsaB0AKUw/viewform"
+      text: "Check our linktree",
+      url: "https://linktr.ee/BYTETMU?utm_source=linktree_profile_share&ltsid=fed87496-82fe-4ad3-98f9-321b76415d66"
     }
   },
   additionalInfo: "Join our community of innovators, developers, and tech enthusiasts at Toronto Metropolitan University"
@@ -86,8 +86,8 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   viewport={{ once: true }}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.05,
                     y: -3,
                     boxShadow: '0 10px 25px rgba(49, 222, 43, 0.3)'
                   }}
@@ -107,8 +107,8 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                   viewport={{ once: true }}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.05,
                     y: -3,
                     boxShadow: '0 10px 25px rgba(49, 222, 43, 0.3)'
                   }}
