@@ -20,7 +20,7 @@ export const projectsData: Project[] = [
     technologies: ['Python', 'Flask', 'React', 'JavaScript', 'TailwindCSS', 'Firebase'],
     liveUrl: 'https://securebyte.vercel.app/',
     githubUrl: 'https://github.com/byte-org/securebyte',
-    videoUrl: '/src/media/Project video demos/securebyte.mp4',
+    videoUrl: '/videos/securebyte.mp4',
     type: 'current'
   },
   {
@@ -30,7 +30,7 @@ export const projectsData: Project[] = [
     description: 'Yapp is the revolutionary campus social platform designed exclusively for TMU students. Connect with your community, discover amazing events across downtown Toronto, and explore your urban campus like never before.',
     technologies: ['Python', 'Flask', 'React', 'JavaScript', 'TailwindCSS', 'MongoDB', 'AWS'],
     liveUrl: 'https://yap-mu.vercel.app',
-    videoUrl: '/src/media/Project video demos/securebyte.mp4',
+    imageUrl: '/videos/yapp.png',
     type: 'current'
   }
 ];
