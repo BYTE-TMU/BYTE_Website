@@ -102,7 +102,7 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=24',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'vp-marketing-001', 'vp-marketing-002', 'vp-marketing-003']
+    connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003']
   },
   {
     id: 'vp-tech-001',
@@ -116,7 +116,7 @@ const allTeamMembers: Member[] = [
 
   // Strategic Team Members (not in Leadership)
   {
-    id: 'events-assoc-001',
+    id: 'marketing-assoc-001',
     name: 'Shahd Alkadi',
     position: 'Marketing Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=6',
@@ -125,25 +125,25 @@ const allTeamMembers: Member[] = [
     connections: ['vp-marketing-001']
   },
   {
-    id: 'events-assoc-001',
+    id: 'marketing-assoc-002',
     name: 'Areej Shariq',
     position: 'Marketing Associate',
-    profilePicUrl: 'https://picsum.photos/200/200?random=6',
+    profilePicUrl: 'https://picsum.photos/200/200?random=7',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-marketing-002']
+    connections: ['vp-marketing-001']
+  },
+  {
+    id: 'marketing-assoc-003',
+    name: 'Cerine Djerouni',
+    position: 'Marketing Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=8',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-marketing-001']
   },
   {
     id: 'events-assoc-001',
-    name: 'Cerine Djerouni',
-    position: 'Marketing Associate',
-    profilePicUrl: 'https://picsum.photos/200/200?random=6',
-    rank: 60,
-    categories: ['Strategic Team'],
-    connections: ['vp-marketing-003']
-  },
-  {
-    id: 'events-assoc-002',
     name: 'Nidhi Biswas',
     position: 'Events Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=27',
@@ -152,7 +152,7 @@ const allTeamMembers: Member[] = [
     connections: ['vp-events-001']
   },
   {
-    id: 'events-assoc-003',
+    id: 'events-assoc-002',
     name: 'Michael Aya-ay',
     position: 'Events Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=28',
@@ -179,22 +179,22 @@ const allTeamMembers: Member[] = [
     connections: ['vp-community-001']
   },
   {
-    id: 'community-assoc-003',
+    id: 'finance-assoc-001',
     name: 'Umar Muhammad',
     position: 'Finance Associate',
-    profilePicUrl: 'https://picsum.photos/200/200?random=26',
+    profilePicUrl: 'https://picsum.photos/200/200?random=29',
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-finance-001']
   },
   {
-    id: 'community-assoc-003',
+    id: 'finance-assoc-002',
     name: 'Angelina Tibayan',
     position: 'Finance Associate',
-    profilePicUrl: 'https://picsum.photos/200/200?random=26',
+    profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-finance-002']
+    connections: ['vp-finance-001']
   },
 
   // Technical Team Members (not in Leadership)
