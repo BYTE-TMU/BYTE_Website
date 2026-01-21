@@ -19,28 +19,28 @@ const aboutData = {
       iconName: 'build-projects',
       title: 'Build Real Projects',
       description: 'Work on open-source AI tools, productivity apps, ML research and more',
-      image: '/src/images/buidingprojects.jpg'
+      image: '/src/media/Hero Images/buidingprojects.jpg'
     },
     {
       id: 2,
       iconName: 'learn-by-doing',
       title: 'Learn by Doing',
       description: 'Whether you\'re a beginner or advanced, you\'ll learn what matters.',
-      image: '/src/images/learnbydoing.jpeg'
+      image: '/src/media/Hero Images/learnbydoing.jpeg'
     },
     {
       id: 3,
       iconName: 'leadership',
       title: 'Leadership Opportunities',
       description: 'Be more than just a member. We actively mentor contributors into executive roles.',
-      image: '/src/images/leadershipopportunity image.JPG'
+      image: '/src/media/Hero Images/leadershipopportunity image.JPG'
     },
     {
       id: 4,
       iconName: 'community',
       title: 'Community & Networking',
       description: "Join a community of like-minded students passionate about AI and all things tech.",
-      image: '/src/images/hero(community).JPG'
+      image: '/src/media/Hero Images/hero(community).JPG'
     }
   ] as InfoCard[]
 };

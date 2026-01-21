@@ -60,9 +60,6 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-ghost-white/80 font-tech-mono text-lg">
-            {currentProject.type === 'current' ? 'Current Project' : 'Past Project'}
-          </p>
         </motion.div>
 
         <div className="relative">
@@ -84,14 +81,14 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <div className="relative">
-            <div 
+            <div
               className="absolute inset-0"
-              style={{ 
+              style={{
                 backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
               }}
             />
-            
+
             <motion.button
               onClick={prevProject}
               className="relative p-3 bg-digital-abyss m-0.5 transition-all duration-200 hover:shadow-lg"
@@ -113,14 +110,14 @@ export default function Projects() {
           </span>
 
           <div className="relative">
-            <div 
+            <div
               className="absolute inset-0"
-              style={{ 
+              style={{
                 backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
               }}
             />
-            
+
             <motion.button
               onClick={nextProject}
               className="relative p-3 bg-digital-abyss m-0.5 transition-all duration-200 hover:shadow-lg"

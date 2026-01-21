@@ -52,8 +52,8 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
         <div className="space-y-6">
           <div className="flex items-center">
             <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${project.status === 'On-going'
-                ? 'bg-green-500 text-white'
-                : 'bg-blue-500 text-white'
+              ? 'bg-green-500 text-white'
+              : 'bg-blue-500 text-white'
               }`}>
               {project.status}
             </span>
@@ -88,21 +88,40 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
         </div>
 
         <div className="space-y-6">
-          <div className="flex justify-end">
-            <motion.a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative px-6 py-3 text-white font-bold text-sm transition-all duration-200"
-              style={{
-                background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
-                clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
-              }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View GitHub
-            </motion.a>
+          <div className="flex justify-end gap-4">
+            {project.githubUrl && (
+              <motion.a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative px-6 py-3 text-white font-bold text-sm transition-all duration-200"
+                style={{
+                  background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
+                  clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
+                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View GitHub
+              </motion.a>
+            )}
+
+            {project.liveUrl && (
+              <motion.a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative px-6 py-3 text-white font-bold text-sm transition-all duration-200"
+                style={{
+                  background: 'linear-gradient(to bottom, #22C55E, #15803D)',
+                  clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
+                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Live
+              </motion.a>
+            )}
           </div>
 
           <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
