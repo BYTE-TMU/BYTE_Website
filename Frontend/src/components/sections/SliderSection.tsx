@@ -8,18 +8,18 @@ interface SliderSectionProps {
   children: React.ReactNode
 }
 
-export default function SliderSection({ 
-  title, 
-  titleColor = 'white', 
-  itemsPerPage, 
-  children 
+export default function SliderSection({
+  title,
+  titleColor = 'white',
+  itemsPerPage,
+  children
 }: SliderSectionProps) {
   const [currentPage, setCurrentPage] = useState(0)
   const [direction, setDirection] = useState(0)
 
   const childrenArray = Children.toArray(children)
   const totalPages = Math.ceil(childrenArray.length / itemsPerPage)
-  
+
   const getCurrentPageItems = () => {
     const startIndex = currentPage * itemsPerPage
     const endIndex = startIndex + itemsPerPage
@@ -74,7 +74,7 @@ export default function SliderSection({
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
+          <h2
             className="text-5xl font-orbitron font-black mb-4"
             style={{ color: titleColor }}
           >
@@ -123,14 +123,14 @@ export default function SliderSection({
           viewport={{ once: true }}
         >
           <div className="relative">
-            <div 
+            <div
               className="absolute inset-0"
-              style={{ 
+              style={{
                 backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
               }}
             />
-            
+
             <motion.button
               onClick={prevPage}
               className="relative p-3 bg-digital-abyss m-0.5 transition-all duration-200 hover:shadow-lg"
@@ -152,14 +152,14 @@ export default function SliderSection({
           </span>
 
           <div className="relative">
-            <div 
+            <div
               className="absolute inset-0"
-              style={{ 
+              style={{
                 backgroundColor: '#48F5FE',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)'
               }}
             />
-            
+
             <motion.button
               onClick={nextPage}
               className="relative p-3 bg-digital-abyss m-0.5 transition-all duration-200 hover:shadow-lg"

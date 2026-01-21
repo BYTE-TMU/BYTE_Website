@@ -43,7 +43,7 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
       dragElastic={1}
       onDragEnd={onDragEnd}
       className="p-8 cursor-grab active:cursor-grabbing"
-      style={{ 
+      style={{
         backgroundColor: '#48F5FE',
         clipPath: 'polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px))'
       }}
@@ -51,11 +51,10 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
           <div className="flex items-center">
-            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-              project.status === 'On-going' 
-                ? 'bg-green-500 text-white' 
+            <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${project.status === 'On-going'
+                ? 'bg-green-500 text-white'
                 : 'bg-blue-500 text-white'
-            }`}>
+              }`}>
               {project.status}
             </span>
           </div>
@@ -106,10 +105,25 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
             </motion.a>
           </div>
 
-          <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center">
-            {project.imageUrl ? (
-              <img 
-                src={project.imageUrl} 
+          <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
+            {project.videoUrl ? (
+              <video
+                src={project.videoUrl}
+                controls
+                loop
+                muted
+                className="w-full h-full object-cover rounded-lg"
+                onMouseEnter={(e) => e.currentTarget.play()}
+                onMouseLeave={(e) => {
+                  e.currentTarget.pause()
+                  e.currentTarget.currentTime = 0
+                }}
+              >
+                Your browser does not support the video tag.
+              </video>
+            ) : project.imageUrl ? (
+              <img
+                src={project.imageUrl}
                 alt={`${project.title} preview`}
                 className="w-full h-full object-cover rounded-lg"
               />

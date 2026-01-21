@@ -7,6 +7,7 @@ export interface InfoCard {
   iconName: string
   title: string
   description: string
+  image: string
 }
 
 const aboutData = {
@@ -17,25 +18,29 @@ const aboutData = {
       id: 1,
       iconName: 'build-projects',
       title: 'Build Real Projects',
-      description: 'Work on open-source AI tools, productivity apps, ML research and more'
+      description: 'Work on open-source AI tools, productivity apps, ML research and more',
+      image: '/src/images/buidingprojects.jpg'
     },
     {
       id: 2,
       iconName: 'learn-by-doing',
       title: 'Learn by Doing',
-      description: 'Whether you\'re a beginner or advanced, you\'ll learn what matters.'
+      description: 'Whether you\'re a beginner or advanced, you\'ll learn what matters.',
+      image: '/src/images/learnbydoing.jpeg'
     },
     {
       id: 3,
       iconName: 'leadership',
       title: 'Leadership Opportunities',
-      description: 'Be more than just a member. We actively mentor contributors into executive roles.'
+      description: 'Be more than just a member. We actively mentor contributors into executive roles.',
+      image: '/src/images/leadershipopportunity image.JPG'
     },
     {
       id: 4,
       iconName: 'community',
       title: 'Community & Networking',
-      description: "Join a community of like-minded students passionate about AI and all things tech."
+      description: "Join a community of like-minded students passionate about AI and all things tech.",
+      image: '/src/images/hero(community).JPG'
     }
   ] as InfoCard[]
 };
@@ -59,7 +64,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 
+          <h2
             className="text-5xl lg:text-6xl font-orbitron font-black mb-8 text-transparent bg-clip-text"
             style={{ background: 'linear-gradient(to right, #2B9398, #48F5FE)', WebkitBackgroundClip: 'text' }}
           >

@@ -27,15 +27,15 @@ export default function InfoCard({ card, index }: InfoCardProps) {
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
     >
-      <div 
+      <div
         className="absolute inset-0"
-        style={{ 
+        style={{
           backgroundColor: '#48f5FE',
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)'
         }}
       />
-      
-      <div 
+
+      <div
         className="relative p-5 m-0.5 flex flex-col h-full"
         style={{
           backgroundColor: '#4C5EF6',
@@ -55,8 +55,8 @@ export default function InfoCard({ card, index }: InfoCardProps) {
         </p>
 
         <div className="aspect-[4/3] bg-gray-300 flex items-center justify-center overflow-hidden mt-auto">
-          <img 
-            src={`https://picsum.photos/280/210?random=${card.id}`}
+          <img
+            src={card.image}
             alt={`${card.title} illustration`}
             className="w-full h-full object-cover"
             loading="lazy"
