@@ -286,7 +286,7 @@ export default function Events() {
                         </p>
                       )}
                       {currentEvent.description && (
-                        <p className="text-white leading-relaxed line-clamp-3">
+                        <p className="text-white leading-relaxed">
                           {currentEvent.description}
                         </p>
                       )}
