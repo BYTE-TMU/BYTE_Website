@@ -65,7 +65,16 @@ const allTeamMembers: Member[] = [
     position: 'VP of Events',
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
-    categories: [ 'Strategic Team'],
+    categories: ['Strategic Team'],
+    connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
+  },
+  {
+    id: 'vp-operations-001',
+    name: 'Parth Patel',
+    position: 'VP of Operations',
+    profilePicUrl: 'https://picsum.photos/200/200?random=4',
+    rank: 80,
+    categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
   },
   {
@@ -83,7 +92,7 @@ const allTeamMembers: Member[] = [
     position: 'VP of Marketing',
     profilePicUrl: 'https://picsum.photos/200/200?random=24',
     rank: 80,
-    categories: [ 'Strategic Team'],
+    categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'designer-001']
   },
   {
@@ -142,15 +151,6 @@ const allTeamMembers: Member[] = [
     categories: ['Strategic Team'],
     connections: ['vp-community-001']
   },
-  {
-    id: 'designer-001',
-    name: 'Zahra Zahra',
-    position: 'Graphic Designer',
-    profilePicUrl: 'https://picsum.photos/200/200?random=7',
-    rank: 60,
-    categories: ['Strategic Team'],
-    connections: ['vp-marketing-001']
-  },
 
   // Technical Team Members (not in Leadership)
   {
@@ -161,24 +161,6 @@ const allTeamMembers: Member[] = [
     rank: 75,
     categories: ['Technical Team'],
     connections: ['head-tech-001', 'vp-tech-001']
-  },
-  {
-    id: 'dir-frontend-001',
-    name: 'Mashrufa Orchi',
-    position: 'Director of Frontend Engineering',
-    profilePicUrl: 'https://picsum.photos/200/200?random=10',
-    rank: 70,
-    categories: ['Technical Team'],
-    connections: ['vp-tech-001', 'frontend-eng-001', 'frontend-eng-002', 'frontend-eng-003']
-  },
-  {
-    id: 'dir-ai-001',
-    name: 'Prisha Thakkar',
-    position: 'Director of AI/ML Engineering',
-    profilePicUrl: 'https://picsum.photos/200/200?random=11',
-    rank: 70,
-    categories: ['Technical Team'],
-    connections: ['vp-tech-001', 'aiml-eng-001', 'aiml-eng-002', 'aiml-eng-003']
   },
   {
     id: 'dir-backend-001',
@@ -192,18 +174,9 @@ const allTeamMembers: Member[] = [
   {
     id: 'frontend-eng-001',
     name: 'Johan Philip',
-    position: 'Frontend Engineer',
+    position: 'Director of Frontend Engineering',
     profilePicUrl: 'https://picsum.photos/200/200?random=13',
-    rank: 50,
-    categories: ['Technical Team'],
-    connections: ['dir-frontend-001']
-  },
-  {
-    id: 'frontend-eng-002',
-    name: 'Alex Nguyen',
-    position: 'Frontend Engineer',
-    profilePicUrl: 'https://picsum.photos/200/200?random=14',
-    rank: 50,
+    rank: 70,
     categories: ['Technical Team'],
     connections: ['dir-frontend-001']
   },
@@ -219,6 +192,15 @@ const allTeamMembers: Member[] = [
   {
     id: 'aiml-eng-001',
     name: 'Nancy Maliackel',
+    position: 'Director of AI/ML Engineering',
+    profilePicUrl: 'https://picsum.photos/200/200?random=15',
+    rank: 70,
+    categories: ['Technical Team'],
+    connections: ['dir-ai-001']
+  },
+  {
+    id: 'aiml-eng-001',
+    name: 'Akbar Ali',
     position: 'AI/ML Engineer',
     profilePicUrl: 'https://picsum.photos/200/200?random=15',
     rank: 50,
@@ -226,19 +208,10 @@ const allTeamMembers: Member[] = [
     connections: ['dir-ai-001']
   },
   {
-    id: 'aiml-eng-002',
-    name: 'Joshua Joseph',
+    id: 'aiml-eng-001',
+    name: 'Sanjana Urba',
     position: 'AI/ML Engineer',
-    profilePicUrl: 'https://picsum.photos/200/200?random=16',
-    rank: 50,
-    categories: ['Technical Team'],
-    connections: ['dir-ai-001']
-  },
-  {
-    id: 'aiml-eng-003',
-    name: 'Gajanan Vigneswaran',
-    position: 'AI/ML Engineer',
-    profilePicUrl: 'https://picsum.photos/200/200?random=17',
+    profilePicUrl: 'https://picsum.photos/200/200?random=15',
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-ai-001']
