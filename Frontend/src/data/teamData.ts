@@ -75,25 +75,25 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002']
+    connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002', 'corp-rel-assoc-001']
   },
   {
     id: 'vp-operations-001',
-    name: 'Parth Patel',
+    name: 'Parth Pawa',
     position: 'VP of Operations',
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
+    connections: ['pres-001', 'head-strat-001', 'operations-assoc-001', 'operations-assoc-002', 'operations-assoc-003']
   },
   {
-    id: 'vp-community-001',
+    id: 'vp-growth-001',
     name: 'Areej Ubaid',
-    position: 'VP of Community',
+    position: 'VP of Growth',
     profilePicUrl: 'https://picsum.photos/200/200?random=23',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'community-assoc-001', 'community-assoc-002']
+    connections: ['pres-001', 'head-strat-001', 'growth-assoc-001', 'growth-assoc-002']
   },
   {
     id: 'vp-marketing-001',
@@ -153,6 +153,15 @@ const allTeamMembers: Member[] = [
   },
   {
     id: 'events-assoc-002',
+    name: 'Areej Tariq',
+    position: 'Events Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=27',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-events-001']
+  },
+  {
+    id: 'events-assoc-003',
     name: 'Michael Aya-ay',
     position: 'Events Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=28',
@@ -161,22 +170,22 @@ const allTeamMembers: Member[] = [
     connections: ['vp-events-001']
   },
   {
-    id: 'community-assoc-001',
+    id: 'growth-assoc-001',
     name: 'Nyra Thakur',
-    position: 'Community Associate',
+    position: 'Growth Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=25',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-community-001']
+    connections: ['vp-growth-001']
   },
   {
-    id: 'community-assoc-002',
+    id: 'growth-assoc-002',
     name: 'Abanshaji Lukose',
-    position: 'Community Associate',
+    position: 'Growth Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=26',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-community-001']
+    connections: ['vp-growth-001']
   },
   {
     id: 'finance-assoc-001',
@@ -191,6 +200,33 @@ const allTeamMembers: Member[] = [
     id: 'finance-assoc-002',
     name: 'Angelina Tibayan',
     position: 'Finance Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=30',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-finance-001']
+  },
+  {
+    id: 'operations-assoc-001',
+    name: 'Ronald Bessada',
+    position: 'Operations Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=30',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-operations-001']
+  },
+  {
+    id: 'operations-assoc-002',
+    name: 'Sabesen Pathmanathan',
+    position: 'Operations Associate',
+    profilePicUrl: 'https://picsum.photos/200/200?random=30',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-operations-001']
+  },
+  {
+    id: 'corp-rel-assoc-001',
+    name: 'Jacky Jiang',
+    position: 'Corporate Relations Associate',
     profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
