@@ -124,7 +124,7 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
             )}
           </div>
 
-          <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden">
+          <div className="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden">
             {project.videoUrl ? (
               <video
                 src={project.videoUrl}
@@ -144,7 +144,7 @@ export default function ProjectCard({ project, direction, onDragEnd }: ProjectCa
               <img
                 src={project.imageUrl}
                 alt={`${project.title} preview`}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-contain rounded-lg"
               />
             ) : (
               <div className="text-gray-500 text-center">
