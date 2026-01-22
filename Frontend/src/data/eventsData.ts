@@ -17,7 +17,6 @@ export interface Event {
 }
 
 export const eventsData: Event[] = [
-  // Past Events (ordered from newest to oldest)
   {
     id: 'upcoming-1',
     title: 'TMU Tech Week',
@@ -52,11 +51,27 @@ export const eventsData: Event[] = [
   },
   {
     id: 'past-2',
+    title: 'BYTE Demo Day - SecureBYTE',
+    date: '2025-12-01',
+    description: 'BYTE hosted a Demo Day featuring a panel discussion where our team presented SecureBYTE, our flagship cybersecurity project. The event showcased our innovative approach to security solutions and fostered engaging conversations with attendees about the future of cybersecurity.',
+    imageUrl: '/images/events/Demoday.JPG',
+    location: 'Daphne Cockwell Health Sciences Complex',
+    type: 'networking',
+    recapUrl: 'https://byte.org/recaps/devfest-2025',
+    recap: {
+      summary: 'BYTE was proud to host a Demo Day featuring a panel discussion where our team presented SecureBYTE, our flagship cybersecurity project. The event showcased our innovative approach to security solutions and fostered engaging conversations with attendees about the future of cybersecurity.',
+      images: [
+        'https://picsum.photos/800/600?random=devfest1',
+      ]
+    }
+  },
+  {
+    id: 'past-3',
     title: 'BYTE Launch Event',
-    date: '2025-09-19',
+    date: '2025-11-29',
     description: 'The official launch event for BYTE! Join us to learn about our organization, meet the executive team, network with fellow AI enthusiasts, and discover how you can get involved in our projects.',
-    imageUrl: 'https://picsum.photos/320/180?random=12',
-    location: 'TMU Student Learning Centre',
+    imageUrl: '/images/events/Demoday.JPG',
+    location: 'George Vari Engineering Building',
     type: 'social',
     recapUrl: 'https://byte.org/recaps/launch-event-2025',
     recap: {
@@ -66,37 +81,19 @@ export const eventsData: Event[] = [
     }
   },
   {
-    id: 'past-3',
-    title: 'TMSU Campus Group Fair',
-    date: '2025-09-04',
+    id: 'past-4',
+    title: 'TMSU Campus Street Fair',
+    date: '2025-09-10',
     description: 'Another tabling opportunity to showcase BYTE and connect with students interested in AI development and open-source projects.',
-    imageUrl: 'https://picsum.photos/320/180?random=11',
-    location: 'TMU Quad',
+    imageUrl: '/images/events/tmsustreetfair.jpeg',
+    location: 'Kerr Hall',
     type: 'networking',
     recapUrl: 'https://byte.org/recaps/tmsu-fair-2025',
     recap: {
-      summary: 'The TMSU Campus Group Fair provided another excellent opportunity to expand our reach. We had engaging conversations with students from various programs about AI, machine learning, and our collaborative project approach. The event helped us build momentum leading up to our official launch event.',
+      summary: 'The TMSU Campus Street Fair provided an excellent opportunity to expand our reach. We had engaging conversations with students from various programs about AI, machine learning, and our collaborative project approach. The event helped us build momentum leading up to our official launch event.',
       images: [
 
       ]
     }
-  },
-  {
-    id: 'past-4',
-    title: 'USSTM Involvement Fair',
-    date: '2025-08-25',
-    description: 'BYTE\'s first tabling event to inform students about our AI-focused student organization and gain interest from potential members.',
-    imageUrl: 'https://picsum.photos/320/180?random=10',
-    location: 'TMU Student Centre',
-    type: 'networking',
-    recapUrl: 'https://byte.org/recaps/usstm-fair-2025',
-    recap: {
-      summary: 'Our debut at the USSTM Involvement Fair was a great success! We introduced BYTE to the TMU community, explaining our mission as a student-led, open-source AI organization. Many students showed interest in our hands-on approach to AI development and our upcoming SecureBYTE project. We collected contact information from over 50 interested students.',
-      images: [
-      ]
-    }
-  },
-
-  // Upcoming Events
-
+  }
 ];
