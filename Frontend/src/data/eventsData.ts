@@ -22,7 +22,7 @@ export const eventsData: Event[] = [
     title: 'TMU Tech Week',
     date: '2026-02-15',
     description: 'BYTE is hosting TMU Tech Week 2026, bringing together students and industry leaders to explore AI, machine learning, and software development. Discover our projects, meet our team, and get involved in the Toronto AI community.',
-    imageUrl: '/images/events/devfestevent.JPG',
+    imageUrl: '/images/events/Tmutechweek.png',
     location: 'TMU SLC.',
     type: 'networking',
     recapUrl: 'https://byte.org/recaps/devfest-2025',
