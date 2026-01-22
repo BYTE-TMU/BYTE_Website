@@ -68,9 +68,9 @@ export const eventsData: Event[] = [
   {
     id: 'past-3',
     title: 'BYTE Launch Event',
-    date: '2025-11-29',
+    date: '2025-09-29',
     description: 'The official launch event for BYTE! Join us to learn about our organization, meet the executive team, network with fellow AI enthusiasts, and discover how you can get involved in our projects.',
-    imageUrl: '/images/events/Demoday.JPG',
+    imageUrl: '/images/events/bytelaunch.jpeg',
     location: 'George Vari Engineering Building',
     type: 'social',
     recapUrl: 'https://byte.org/recaps/launch-event-2025',
