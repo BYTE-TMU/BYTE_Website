@@ -29,7 +29,7 @@ export const eventsData: Event[] = [
     recap: {
       summary: 'BYTE was proud to host a booth at Google DevFest Toronto 2025, one of the largest developer conferences in Canada! This premier event brought together thousands of developers, tech enthusiasts, and industry leaders to explore the latest in AI, cloud computing, and open-source technologies. Our team engaged with attendees, shared insights on our SecureBYTE project, and connected with potential collaborators and sponsors. It was an inspiring day filled with learning, networking, and celebrating the vibrant developer community.',
       images: [
-        'https://picsum.photos/800/600?random=devfest1',
+        '/images/events/Tmutechweek.png',
       ]
     }
   },
@@ -45,7 +45,7 @@ export const eventsData: Event[] = [
     recap: {
       summary: 'BYTE was proud to host a booth at Google DevFest Toronto 2025, one of the largest developer conferences in Canada! This premier event brought together thousands of developers, tech enthusiasts, and industry leaders to explore the latest in AI, cloud computing, and open-source technologies. Our team engaged with attendees, shared insights on our SecureBYTE project, and connected with potential collaborators and sponsors. It was an inspiring day filled with learning, networking, and celebrating the vibrant developer community.',
       images: [
-        'https://picsum.photos/800/600?random=devfest1',
+        '/images/events/devfestevent.JPG',
       ]
     }
   },
@@ -61,7 +61,7 @@ export const eventsData: Event[] = [
     recap: {
       summary: 'BYTE was proud to host a Demo Day featuring a panel discussion where our team presented SecureBYTE, our flagship cybersecurity project. The event showcased our innovative approach to security solutions and fostered engaging conversations with attendees about the future of cybersecurity.',
       images: [
-        'https://picsum.photos/800/600?random=devfest1',
+        '/images/events/Demoday.JPG',
       ]
     }
   },
@@ -77,6 +77,7 @@ export const eventsData: Event[] = [
     recap: {
       summary: 'Our official launch event exceeded all expectations! Students attended to learn about BYTE\'s mission and vision. We presented our SecureBYTE project, conducted networking sessions, and welcomed many new members to our community. The event featured presentations from our executive team, interactive demos, and an exciting roadmap for the semester ahead.',
       images: [
+        '/images/events/bytelaunch.jpeg',
       ]
     }
   },
@@ -92,7 +93,7 @@ export const eventsData: Event[] = [
     recap: {
       summary: 'The TMSU Campus Street Fair provided an excellent opportunity to expand our reach. We had engaging conversations with students from various programs about AI, machine learning, and our collaborative project approach. The event helped us build momentum leading up to our official launch event.',
       images: [
-
+        '/images/events/tmsustreetfair.jpeg',
       ]
     }
   }
