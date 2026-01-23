@@ -10,7 +10,6 @@ export default function Mission() {
     { src: '/images/events/bytelaunch.jpeg', alt: 'BYTE Launch Event' },
     { src: '/images/events/devfestevent.JPG', alt: 'DevFest Event' },
     { src: '/images/events/tmsustreetfair.jpeg', alt: 'TMU Street Fair' },
-    { src: '/images/events/Tmutechweek.png', alt: 'TMU Tech Week' },
   ]
 
   useEffect(() => {
@@ -111,8 +110,8 @@ export default function Mission() {
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
-                      ? 'bg-terminal-green w-6'
-                      : 'bg-ghost-white/50 hover:bg-ghost-white/80'
+                    ? 'bg-terminal-green w-6'
+                    : 'bg-ghost-white/50 hover:bg-ghost-white/80'
                     }`}
                   aria-label={`Go to image ${index + 1}`}
                 />
