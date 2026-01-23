@@ -1,7 +1,26 @@
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export default function Mission() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const eventImages = [
+    { src: '/images/events/Demoday.JPG', alt: 'BYTE Demo Day Event' },
+    { src: '/images/events/bytelaunch.jpeg', alt: 'BYTE Launch Event' },
+    { src: '/images/events/devfestevent.JPG', alt: 'DevFest Event' },
+    { src: '/images/events/tmsustreetfair.jpeg', alt: 'TMU Street Fair' },
+    { src: '/images/events/Tmutechweek.png', alt: 'TMU Tech Week' },
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % eventImages.length)
+    }, 4000) // Change image every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="py-20 bg-digital-abyss relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
@@ -29,7 +48,7 @@ export default function Mission() {
           </h2>
 
           <p className="text-lg lg:text-xl text-ghost-white max-w-4xl mx-auto leading-relaxed">
-            We exist to empower students to gain hands-on experience in real-world AI development by working collaboratively on projects that make a difference.
+            Building AI that matters, one student project at a time.
           </p>
         </motion.div>
 
@@ -50,7 +69,7 @@ export default function Mission() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              SecureBYTE is an open-source project that helps developers detect potential security flaws and logical issues in their code using traditional static code analysis and LLMs. The AI model then offers insights and suggests remediations directly on developers' code.
+              BYTE is a student-led organization dedicated to building innovative AI solutions that address real-world challenges. We bring together passionate developers, designers, and AI enthusiasts to collaborate on cutting-edge projects that push the boundaries of technology.
             </motion.p>
 
             <motion.p
@@ -60,24 +79,45 @@ export default function Mission() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Developers can publicly contribute to SecureBYTE via this GitHub repository.
+              Through hands-on project development, workshops, and community collaboration, we create an environment where students can learn, grow, and make meaningful contributions to the AI ecosystem while building their portfolios and professional networks.
             </motion.p>
           </div>
 
-          {/* Right Column - Image Placeholder */}
+          {/* Right Column - Image Carousel */}
           <motion.div
-            className="aspect-[5/3] bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden"
+            className="aspect-[5/3] rounded-lg flex items-center justify-center overflow-hidden relative"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <img
-              src="https://picsum.photos/600/350?random=20"
-              alt="SecureBYTE project illustration"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImageIndex}
+                src={eventImages[currentImageIndex].src}
+                alt={eventImages[currentImageIndex].alt}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              />
+            </AnimatePresence>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+              {eventImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
+                      ? 'bg-terminal-green w-6'
+                      : 'bg-ghost-white/50 hover:bg-ghost-white/80'
+                    }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>
