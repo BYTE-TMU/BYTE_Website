@@ -44,15 +44,15 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
           >
             <div className="relative">
               {/* Modal background with notched corners */}
-              <div 
+              <div
                 className="absolute inset-0"
-                style={{ 
+                style={{
                   backgroundColor: '#48F5FE',
                   clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))'
                 }}
               />
-              
-              <div 
+
+              <div
                 className="relative p-8 m-1"
                 style={{
                   backgroundColor: '#1a1a1a',
@@ -80,7 +80,7 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    
+
                     {/* Rank indicator */}
                     {member.rank >= 80 && (
                       <motion.div
@@ -124,7 +124,7 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
                     transition={{ delay: 0.4 }}
                   >
                     <p className="text-white/80 font-tech-mono text-sm leading-relaxed">
-                      A valued member of the BYTE team, contributing to our mission of advancing AI innovation and technology development.
+                      {member.roleDescription}
                     </p>
                   </motion.div>
 
@@ -135,7 +135,7 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <button 
+                    <button
                       className="flex-1 px-4 py-2 font-tech-mono text-sm text-white border border-[#48F5FE] hover:bg-[#48F5FE] hover:text-black transition-all duration-200"
                       style={{
                         clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)'
@@ -143,8 +143,8 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
                     >
                       Connect
                     </button>
-                    
-                    <button 
+
+                    <button
                       className="flex-1 px-4 py-2 font-tech-mono text-sm text-black"
                       style={{
                         background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',

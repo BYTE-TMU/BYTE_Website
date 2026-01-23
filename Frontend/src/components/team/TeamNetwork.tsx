@@ -24,12 +24,12 @@ const transformMemberData = (members: Member[]): TeamNetworkMember[] => {
     id: member.id,
     name: member.name,
     role: member.position,
-    team: member.rank >= 90 || member.position.includes('Head of') ? 'leadership' : 
-          member.position.toLowerCase().includes('strategic') || 
-          member.position.toLowerCase().includes('events') ||
-          member.position.toLowerCase().includes('graphic') ? 'strategic' : 'technical',
+    team: member.rank >= 90 || member.position.includes('Head of') ? 'leadership' :
+      member.position.toLowerCase().includes('strategic') ||
+        member.position.toLowerCase().includes('events') ||
+        member.position.toLowerCase().includes('graphic') ? 'strategic' : 'technical',
     avatar: member.profilePicUrl,
-    bio: `A valued member of the BYTE team, contributing to our mission of advancing AI innovation and technology development.`,
+    bio: member.roleDescription,
     connections: member.connections || [] // Use the actual connections from the data
   }))
 }
@@ -47,18 +47,18 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
 
     const width = 800
     const height = 600
-    
+
     // Create hierarchical structure using actual connections
     const createHierarchy = () => {
       const hierarchy: any = {
         name: "BYTE Organization",
         children: []
       }
-      
+
       // Find the president as the root
       const president = networkMembers.find(m => m.role === 'President')
       if (!president) return hierarchy
-      
+
       // Create nodes lookup
       const nodeMap = new Map()
       networkMembers.forEach(member => {
@@ -67,15 +67,15 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
           children: []
         })
       })
-      
+
       // Build tree structure using connections with cycle detection
       const visited = new Set()
       const buildChildren = (parentNode: any, ancestors = new Set()) => {
         const children: any[] = []
-        
+
         // Add current node to ancestors to detect cycles
         ancestors.add(parentNode.id)
-        
+
         // Find all members that connect to this parent
         networkMembers.forEach(member => {
           if (member.connections?.includes(parentNode.id) && !ancestors.has(member.id)) {
@@ -86,34 +86,34 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
             }
           }
         })
-        
+
         // Recursively build children for each child
         children.forEach(child => {
           child.children = buildChildren(child, new Set(ancestors))
         })
-        
+
         return children
       }
-      
+
       const rootNode = {
         ...president,
         children: buildChildren(president, new Set())
       }
-      
+
       // Mark president as visited
       visited.add(president.id)
-      
+
       hierarchy.children.push(rootNode)
       return hierarchy
     }
 
     const hierarchyData = createHierarchy()
     const root = d3.hierarchy(hierarchyData)
-    
+
     // Create tree layout
     const treeLayout = d3.tree()
       .size([width - 100, height - 100])
-    
+
     treeLayout(root)
 
     // Create links
@@ -155,7 +155,7 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
       })
       .attr('fill', (d: any) => {
         if (!d.data.role) return '#48F5FE'
-        switch(d.data.team) {
+        switch (d.data.team) {
           case 'leadership': return '#CEFE00'
           case 'technical': return '#4C5EF6'
           case 'strategic': return '#2B9398'
@@ -176,16 +176,16 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
 
     // Add role labels with dynamic sizing and line breaking for long roles
     nodeElements.append('text')
-      .each(function(d: any) {
+      .each(function (d: any) {
         const element = d3.select(this)
         const role = d.data.role || ''
-        
+
         if (role.length > 20) {
           // For long roles, break into multiple lines
           const words = role.split(' ')
           const lines = []
           let currentLine = words[0]
-          
+
           for (let i = 1; i < words.length; i++) {
             if (currentLine.length + words[i].length + 1 <= 15) {
               currentLine += ' ' + words[i]
@@ -195,7 +195,7 @@ export default function TeamNetwork({ members, onMemberClick }: TeamNetworkProps
             }
           }
           lines.push(currentLine)
-          
+
           lines.forEach((line, index) => {
             element.append('tspan')
               .text(line)
