@@ -29,10 +29,10 @@ export default function EventsPage() {
   const upcomingEvents = getUpcomingEvents()
   const pastEvents = getPastEvents()
 
-  // Add placeholder cards for upcoming events to ensure always 2 cards minimum
+  // Add placeholder cards for upcoming events if none exist
   const getUpcomingEventsWithPlaceholders = () => {
     const events = [...upcomingEvents]
-    const placeholdersNeeded = Math.max(0, 2 - events.length)
+    const placeholdersNeeded = events.length === 0 ? 1 : 0
 
     for (let i = 0; i < placeholdersNeeded; i++) {
       events.push({

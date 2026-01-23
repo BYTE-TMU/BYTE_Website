@@ -28,7 +28,8 @@ export default function SliderSection({
 
   const isLastPage = currentPage === totalPages - 1
   const currentPageItemCount = getCurrentPageItems().length
-  const shouldCenter = isLastPage && currentPageItemCount < itemsPerPage
+  // Center items when on last page with fewer items OR when there's only 1 item total
+  const shouldCenter = (isLastPage && currentPageItemCount < itemsPerPage) || childrenArray.length === 1
 
   const nextPage = () => {
     setDirection(1)
