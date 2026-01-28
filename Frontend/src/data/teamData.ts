@@ -8,6 +8,8 @@ export interface Member {
   rank: number // Higher number = larger circle (President: 100, VP: 80, Director: 60, Manager: 50, Member: 40)
   categories: string[] // Categories this member belongs to (e.g., ['Leadership', 'Technical Team'])
   connections?: string[] // IDs of connected members for network visualization
+  email?: string // Optional email address
+  linkedInUrl?: string // Optional LinkedIn profile URL
 }
 
 export interface TeamCategory {
@@ -28,7 +30,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=1',
     rank: 100,
     categories: ['Leadership'],
-    connections: ['cos-001', 'head-strat-001', 'head-tech-001', 'vp-tech-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001']
+    connections: ['cos-001', 'head-strat-001', 'head-tech-001', 'vp-tech-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],
+    email: 'mpatadia@torontomu.ca'
   },
   {
     id: 'cos-001',
@@ -38,7 +41,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=2',
     rank: 95,
     categories: ['Leadership'],
-    connections: ['pres-001', 'head-tech-001', 'head-strat-001']
+    connections: ['pres-001', 'head-tech-001', 'head-strat-001'],
+    email: 'pearl.ved@torontomu.ca'
   },
 
   // Heads - In both Leadership and their respective teams
@@ -50,7 +54,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=5',
     rank: 85,
     categories: ['Leadership', 'Strategic Team'],
-    connections: ['pres-001', 'cos-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001']
+    connections: ['pres-001', 'cos-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],
+    email: 'yeji1.lee@torontomu.ca'
   },
   {
     id: 'head-tech-001',
@@ -60,7 +65,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=8',
     rank: 85,
     categories: ['Leadership', 'Technical Team'],
-    connections: ['pres-001', 'cos-001', 'vp-tech-001', 'proj-exp-lead-001']
+    connections: ['pres-001', 'cos-001', 'vp-tech-001', 'proj-exp-lead-001'],
+    email: 'hetvi.modi@torontomu.ca'
   },
 
   // VPs - In both Leadership and their respective teams
@@ -72,7 +78,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003']
+    connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003'],
+    email: 'arshiya.das@torontomu.ca'
   },
   {
     id: 'vp-finance-001',
@@ -82,7 +89,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002', 'corp-rel-assoc-001']
+    connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002', 'corp-rel-assoc-001'],
+    email: 'vpawa@torontomu.ca'
   },
   {
     id: 'vp-operations-001',
@@ -92,7 +100,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=4',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'operations-assoc-001', 'operations-assoc-002', 'operations-assoc-003']
+    connections: ['pres-001', 'head-strat-001', 'operations-assoc-001', 'operations-assoc-002', 'operations-assoc-003'],
+    email: 'parth.pawa@torontomu.ca'
   },
   {
     id: 'vp-growth-001',
@@ -102,7 +111,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=23',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'growth-assoc-001', 'growth-assoc-002']
+    connections: ['pres-001', 'head-strat-001', 'growth-assoc-001', 'growth-assoc-002'],
+    email: 'areej.ubaid@torontomu.ca'
   },
   {
     id: 'vp-marketing-001',
@@ -112,7 +122,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=24',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003']
+    connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003'],
+    email: 'naetri.niranjan@torontomu.ca'
   },
   {
     id: 'vp-tech-001',
@@ -122,7 +133,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=3',
     rank: 80,
     categories: ['Technical Team'],
-    connections: ['pres-001', 'head-tech-001', 'dir-frontend-001', 'dir-ai-001', 'dir-backend-001']
+    connections: ['pres-001', 'head-tech-001', 'dir-frontend-001', 'dir-ai-001', 'dir-backend-001'],
+    email: 'jacob.mobin@torontomu.ca'
   },
 
   // Strategic Team Members (not in Leadership)
@@ -134,7 +146,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=6',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-marketing-001']
+    connections: ['vp-marketing-001'],
+    email: 'shahd.alkadi@torontomu.ca'
   },
   {
     id: 'marketing-assoc-002',
@@ -144,7 +157,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=7',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-marketing-001']
+    connections: ['vp-marketing-001'],
+    email: 'areej.shariq@torontomu.ca'
   },
   {
     id: 'marketing-assoc-003',
@@ -154,7 +168,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=8',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-marketing-001']
+    connections: ['vp-marketing-001'],
+    email: 'cerine.djerouni@torontomu.ca'
   },
   {
     id: 'events-assoc-001',
@@ -164,7 +179,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=27',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-events-001']
+    connections: ['vp-events-001'],
+    email: 'nidhi.biswas@torontomu.ca'
   },
   {
     id: 'events-assoc-002',
@@ -174,7 +190,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=27',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-events-001']
+    connections: ['vp-events-001'],
+    email: 'areej1.tariq@torontomu.ca'
   },
   {
     id: 'events-assoc-003',
@@ -184,7 +201,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=28',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-events-001']
+    connections: ['vp-events-001'],
+    email: 'michael.aya@torontomu.ca'
   },
   {
     id: 'growth-assoc-001',
@@ -194,7 +212,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=25',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-growth-001']
+    connections: ['vp-growth-001'],
+    email: 'nyra.thakur@torontomu.ca'
   },
   {
     id: 'growth-assoc-002',
@@ -204,7 +223,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=26',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-growth-001']
+    connections: ['vp-growth-001'],
+    email: 'abanshaji.lukose@torontomu.ca'
   },
   {
     id: 'finance-assoc-001',
@@ -214,7 +234,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=29',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-finance-001']
+    connections: ['vp-finance-001'],
+    email: 'u1muhammad@torontomu.ca'
   },
   {
     id: 'finance-assoc-002',
@@ -224,7 +245,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-finance-001']
+    connections: ['vp-finance-001'],
+    email: 'angelina.tibayan@torontomu.ca'
   },
   {
     id: 'operations-assoc-001',
@@ -234,7 +256,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-operations-001']
+    connections: ['vp-operations-001'],
+    email: 'ronald.bessada@torontomu.ca'
   },
   {
     id: 'operations-assoc-002',
@@ -244,7 +267,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-operations-001']
+    connections: ['vp-operations-001'],
+    email: 'sabesen.pathmanathan@torontomu.ca'
   },
   {
     id: 'corp-rel-assoc-001',
@@ -254,7 +278,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=30',
     rank: 60,
     categories: ['Strategic Team'],
-    connections: ['vp-finance-001']
+    connections: ['vp-finance-001'],
+    email: 'jacky.jiang@torontomu.ca'
   },
 
   // Technical Team Members (not in Leadership)
@@ -266,7 +291,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=9',
     rank: 75,
     categories: ['Technical Team'],
-    connections: ['head-tech-001', 'vp-tech-001']
+    connections: ['head-tech-001', 'vp-tech-001'],
+    email: 'rayan.roshan@torontomu.ca'
   },
   {
     id: 'dir-backend-001',
@@ -276,7 +302,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=12',
     rank: 70,
     categories: ['Technical Team'],
-    connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002']
+    connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002'],
+    email: 'roxie.reginold@torontomu.ca'
   },
   {
     id: 'frontend-eng-001',
@@ -286,7 +313,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=13',
     rank: 70,
     categories: ['Technical Team'],
-    connections: ['dir-frontend-001']
+    connections: ['dir-frontend-001'],
+    email: 'johan.philip@torontomu.ca'
   },
   {
     id: 'frontend-eng-003',
@@ -296,7 +324,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=21',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-frontend-001']
+    connections: ['dir-frontend-001'],
+    email: 'e1cha@torontomu.ca'
   },
   {
     id: 'frontend-eng-003',
@@ -306,7 +335,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=21',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-frontend-001']
+    connections: ['dir-frontend-001'],
+    email: 'a1ma@torontomu.ca'
   },
   {
     id: 'frontend-eng-003',
@@ -316,7 +346,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=21',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-frontend-001']
+    connections: ['dir-frontend-001'],
+    email: 'stephen1.nguyen@torontomu.ca'
   },
   {
     id: 'aiml-eng-001',
@@ -326,7 +357,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=15',
     rank: 70,
     categories: ['Technical Team'],
-    connections: ['dir-ai-001']
+    connections: ['dir-ai-001'],
+    email: 'nancy.maliackel@torontomu.ca'
   },
   {
     id: 'aiml-eng-001',
@@ -336,7 +368,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=15',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-ai-001']
+    connections: ['dir-ai-001'],
+    email: 'akbar.ali@torontomu.ca'
   },
   {
     id: 'aiml-eng-001',
@@ -346,7 +379,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=15',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-ai-001']
+    connections: ['dir-ai-001'],
+    email: 'surba@torontomu.ca'
   },
   {
     id: 'backend-eng-001',
@@ -356,7 +390,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=18',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-backend-001']
+    connections: ['dir-backend-001'],
+    email: 'Maha1.baig@torontomu.ca'
   },
   {
     id: 'backend-eng-002',
@@ -366,7 +401,8 @@ const allTeamMembers: Member[] = [
     profilePicUrl: 'https://picsum.photos/200/200?random=19',
     rank: 50,
     categories: ['Technical Team'],
-    connections: ['dir-backend-001']
+    connections: ['dir-backend-001'],
+    email: 'e15kim@torontomu.ca'
   }
 ]
 

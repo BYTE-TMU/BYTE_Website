@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Member } from '../../data/teamData'
+import { useState } from 'react'
 
 interface MemberModalProps {
   member: Member | null
@@ -7,8 +8,31 @@ interface MemberModalProps {
   onClose: () => void
 }
 
+// Default LinkedIn URL for BYTE company page
+const DEFAULT_LINKEDIN_URL = 'https://www.linkedin.com/company/buildyourtechnicalexperience/?originalSubdomain=ca'
+
 export default function MemberModal({ member, isOpen, onClose }: MemberModalProps) {
+  const [copied, setCopied] = useState(false)
+
   if (!member) return null
+
+  // Get email - use member's email or a default BYTE email
+  const memberEmail = member.email || 'contact@bytetmu.com'
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(memberEmail)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy email:', err)
+    }
+  }
+
+  const handleLinkedInClick = () => {
+    const linkedInUrl = member.linkedInUrl || DEFAULT_LINKEDIN_URL
+    window.open(linkedInUrl, '_blank', 'noopener,noreferrer')
+  }
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -135,24 +159,30 @@ export default function MemberModal({ member, isOpen, onClose }: MemberModalProp
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
+                    {/* Email Button - Copies to clipboard */}
                     <button
-                      className="flex-1 px-4 py-2 font-tech-mono text-sm text-white border border-[#48F5FE] hover:bg-[#48F5FE] hover:text-black transition-all duration-200"
+                      onClick={handleCopyEmail}
+                      className="flex-1 px-4 py-3 font-tech-mono text-sm font-bold transition-all duration-200 text-[#48F5FE] border-2 border-[#48F5FE] hover:bg-[#48F5FE] hover:text-black cursor-pointer hover:shadow-[0_0_20px_rgba(72,245,254,0.5)]"
                       style={{
                         clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)'
                       }}
+                      title={`Copy email: ${memberEmail}`}
                     >
-                      Connect
+                      {copied ? '✓ Copied!' : 'Email'}
                     </button>
 
+                    {/* LinkedIn Button - Opens in new tab */}
                     <button
-                      className="flex-1 px-4 py-2 font-tech-mono text-sm text-black"
+                      onClick={handleLinkedInClick}
+                      className="flex-1 px-4 py-3 font-tech-mono text-sm font-bold transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(10,102,194,0.5)] hover:scale-[1.02]"
                       style={{
-                        background: 'linear-gradient(to bottom, #4C5EF6, #2C3790)',
+                        background: 'linear-gradient(to bottom, #0A66C2, #004182)',
                         clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)',
                         color: 'white'
                       }}
+                      title={member.linkedInUrl ? `View ${member.name}'s LinkedIn` : 'View BYTE on LinkedIn'}
                     >
-                      Portfolio
+                      LinkedIn
                     </button>
                   </motion.div>
                 </div>
