@@ -21,7 +21,7 @@ interface TabConfig {
 export default function TeamSection({ title, teamData, showPrototypes = false }: TeamSectionProps) {
   const [activeTab, setActiveTab] = useState(0)
   const [selectedMember, setSelectedMember] = useState<Member | null>(null)
-  
+
   // Flatten all members for "All Members" tabs and deduplicate by ID
   const allMembers = Array.from(
     new Map(
@@ -30,7 +30,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
   ).sort((a, b) => b.rank - a.rank) // Sort by rank descending
 
   const leadershipMembers = teamData.find(cat => cat.categoryName === 'Leadership')?.members || []
-  
+
   // Configure tabs based on showPrototypes prop
   const tabs: TabConfig[] = [
     // Prototype tabs first (only if enabled)
@@ -55,7 +55,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
         data: category
       }))
   ]
-  
+
   return (
     <section className="py-20 bg-digital-abyss relative overflow-hidden" id="team">
       {/* Background grid pattern */}
@@ -66,7 +66,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
           ))}
         </div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Title */}
         <motion.div
@@ -80,7 +80,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
             {title}
           </h2>
         </motion.div>
-        
+
         {/* Tab Navigation */}
         <motion.div
           className="flex justify-center mb-12"
@@ -91,29 +91,30 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
         >
           <div className="relative">
             {/* Outer border with #CEFE00 color */}
-            <div 
+            <div
               className="absolute inset-0 border-2"
-              style={{ 
+              style={{
                 borderColor: '#CEFE00',
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
               }}
             />
-            
+
             {/* Inner background with gray */}
-            <div 
+            <div
               className="relative flex items-center bg-gray-600 m-0.5"
-              style={{ 
+              style={{
                 clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
               }}
             >
-              <div className="flex items-center flex-wrap">
+              {/* Vertical on mobile, horizontal on desktop */}
+              <div className="flex flex-col md:flex-row md:items-center w-full">
                 {tabs.map((tab, index) => (
                   <motion.button
                     key={tab.name}
                     onClick={() => setActiveTab(index)}
-                    className="relative px-4 py-3 font-tech-mono font-bold text-xs transition-all duration-300 group mx-1 my-1"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="relative px-6 py-4 md:px-4 md:py-3 font-tech-mono font-bold text-sm md:text-xs transition-all duration-300 group mx-1 my-0.5 md:my-1 w-full md:w-auto text-left md:text-center"
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {/* Selected tab background with notched corner */}
                     {activeTab === index && (
@@ -121,22 +122,21 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
                         className="absolute inset-0 transition-all duration-300"
                         style={{
                           backgroundColor: '#4C5EF6',
-                          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
+                          clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%)'
                         }}
                       />
                     )}
-                    
+
                     {/* Tab text */}
-                    <span 
-                      className={`relative z-10 transition-colors duration-300 ${
-                        activeTab === index 
-                          ? 'text-white font-bold' 
-                          : 'text-ghost-white/80 hover:text-white'
-                      }`}
+                    <span
+                      className={`relative z-10 transition-colors duration-300 ${activeTab === index
+                        ? 'text-white font-bold'
+                        : 'text-ghost-white/80 hover:text-white'
+                        }`}
                     >
                       {tab.name}
                     </span>
-                    
+
                     {/* Hover effect for non-active tabs */}
                     {activeTab !== index && (
                       <motion.div
@@ -152,7 +152,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
             </div>
           </div>
         </motion.div>
-        
+
         {/* Team Display */}
         <motion.div
           key={activeTab} // Force re-render when tab changes
@@ -162,15 +162,15 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
           transition={{ duration: 0.5 }}
         >
           {tabs[activeTab] && (
-            <TeamDisplay 
-              tab={tabs[activeTab]} 
+            <TeamDisplay
+              tab={tabs[activeTab]}
               onMemberClick={(member) => {
                 setSelectedMember(member)
               }}
             />
           )}
         </motion.div>
-        
+
         {/* Category info */}
         <motion.div
           className="text-center mt-8"
@@ -183,7 +183,7 @@ export default function TeamSection({ title, teamData, showPrototypes = false }:
             {getMemberCount(tabs[activeTab])} members in {tabs[activeTab]?.name}
           </p>
         </motion.div>
-        
+
         {/* Floating elements for visual interest */}
         <div className="absolute top-20 left-10 w-4 h-4 bg-[#48F5FE] rounded-full opacity-20 animate-pulse" />
         <div className="absolute top-40 right-20 w-6 h-6 bg-[#CEFE00] rounded-full opacity-15 animate-pulse" style={{ animationDelay: '1s' }} />
@@ -214,19 +214,19 @@ function getMemberCount(tab: TabConfig | undefined): number {
 function TeamDisplay({ tab, onMemberClick }: { tab: TabConfig; onMemberClick: (member: Member) => void }) {
   switch (tab.type) {
     case 'bubble':
-      const bubbleData = Array.isArray(tab.data) 
+      const bubbleData = Array.isArray(tab.data)
         ? { categoryName: 'All Members', members: tab.data }
         : tab.data as TeamCategory
       return <BubbleCloud members={bubbleData.members} />
-      
+
     case 'network':
       const networkMembers = Array.isArray(tab.data) ? tab.data : []
       return <TeamNetwork members={networkMembers} onMemberClick={onMemberClick} />
-      
+
     case 'cards':
       const cardMembers = Array.isArray(tab.data) ? tab.data : []
       return <TeamCardGrid members={cardMembers} onMemberClick={onMemberClick} />
-      
+
     default:
       return null
   }

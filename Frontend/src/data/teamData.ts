@@ -281,6 +281,28 @@ const allTeamMembers: Member[] = [
     connections: ['vp-finance-001'],
     email: 'jacky.jiang@torontomu.ca'
   },
+  {
+    id: 'digital-media-mgr-001',
+    name: 'Karunya Purohit',
+    position: 'Digital Media Manager',
+    roleDescription: 'Manages BYTE\'s digital media presence, creating and curating content across social platforms to engage the TMU tech community and showcase our initiatives.',
+    profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-marketing-001'],
+    email: 'karunya.purohit@torontomu.ca'
+  },
+  {
+    id: 'hr-mgr-001',
+    name: 'Chris Ahn',
+    position: 'HR Manager',
+    roleDescription: 'Oversees BYTE\'s human resources and team culture, managing recruitment, member relations, and fostering a positive environment for all team members.',
+    profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-operations-001'],
+    email: 'chris.ahn@torontomu.ca'
+  },
 
   // Technical Team Members (not in Leadership)
   {

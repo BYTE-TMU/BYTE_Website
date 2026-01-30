@@ -15,51 +15,44 @@ interface BubblePosition {
   member: Member
 }
 
-const getSizeFromRank = (rank: number, maxRank: number): number => {
-  const maxSize = 120 // Maximum size for the highest ranked member in section
-  const minSize = 50  // Minimum size for the lowest ranked member
-  
+const getSizeFromRank = (rank: number, maxRank: number, isMobile: boolean): number => {
+  // Use smaller sizes on mobile to prevent overlap
+  const maxSize = isMobile ? 80 : 120
+  const minSize = isMobile ? 35 : 50
+
   // Calculate proportional size based on the highest rank in this section
   const ratio = rank / maxRank
   const size = minSize + (maxSize - minSize) * ratio
-  
+
   return Math.max(minSize, Math.min(maxSize, size))
 }
 
-const calculateBubblePositions = (members: Member[], containerWidth: number, containerHeight: number): BubblePosition[] => {
+const calculateBubblePositions = (members: Member[], containerWidth: number, containerHeight: number, isMobile: boolean): BubblePosition[] => {
   const positions: BubblePosition[] = []
   const sortedMembers = [...members].sort((a, b) => b.rank - a.rank) // Highest rank first
   const maxRank = Math.max(...members.map(m => m.rank))
-  
+
   const centerX = containerWidth / 2
   const centerY = containerHeight / 2
-  const minGap = 2 // Reduced gap for tighter clustering
-  const ovalCompressionFactor = 0.75 // Y-axis compression for oval shape
+  const minGap = isMobile ? 8 : 6 // Increased gap to ensure no overlap
 
   // Helper function to check if position is valid (no overlaps)
-  // Now accounts for oval compression in the validation
-  const isValidPosition = (x: number, y: number, size: number, applyOvalCompression = true): boolean => {
+  // All positions are stored and compared in their FINAL display coordinates
+  const isValidPosition = (x: number, y: number, size: number): boolean => {
     const radius = size / 2
-    const padding = 10
-
-    // Apply oval compression to test position if needed
-    let testY = y
-    if (applyOvalCompression) {
-      const deltaY = (y + radius) - centerY
-      testY = centerY + deltaY * ovalCompressionFactor - radius
-    }
+    const padding = isMobile ? 5 : 10
 
     // Check bounds
-    if (x < padding || testY < padding ||
-        x + size > containerWidth - padding ||
-        testY + size > containerHeight - padding) {
+    if (x < padding || y < padding ||
+      x + size > containerWidth - padding ||
+      y + size > containerHeight - padding) {
       return false
     }
 
     // Check clearance from all existing bubbles
     for (const existing of positions) {
       const dx = (x + radius) - (existing.x + existing.size / 2)
-      const dy = (testY + radius) - (existing.y + existing.size / 2)
+      const dy = (y + radius) - (existing.y + existing.size / 2)
       const distanceBetween = Math.sqrt(dx * dx + dy * dy)
       const requiredDistance = radius + existing.size / 2 + minGap
 
@@ -70,48 +63,43 @@ const calculateBubblePositions = (members: Member[], containerWidth: number, con
 
     return true
   }
-  
+
   for (let i = 0; i < sortedMembers.length; i++) {
     const member = sortedMembers[i]
-    const size = getSizeFromRank(member.rank, maxRank)
+    const size = getSizeFromRank(member.rank, maxRank, isMobile)
     const radius = size / 2
-    
+
     let bestX = centerX - radius
     let bestY = centerY - radius
     let found = false
-    
+
     if (i === 0) {
       // First (highest rank) bubble goes at exact center
-      // Apply oval compression immediately
-      const deltaY = bestY + radius - centerY
-      bestY = centerY + deltaY * ovalCompressionFactor - radius
       positions.push({ x: bestX, y: bestY, size, member })
       continue
     }
 
-    // Improved spiral search with guaranteed placement
-    // Search outward from center in a continuous spiral pattern
-    const maxSearchDistance = Math.max(containerWidth, containerHeight) * 0.8 // Increased search area
+    // Spiral search - search outward from center
+    const maxSearchDistance = Math.max(containerWidth, containerHeight)
 
-    // Fine-grained spiral search
-    let distance = size * 0.6 // Start close to center
-    const angleIncrement = Math.PI / 18 // 36 angles per full rotation (10 degrees)
-    const distanceIncrement = 2 // Small steps for thorough search
+    // Use smaller angle increments and distance steps for thorough coverage
+    const angleIncrement = Math.PI / 24 // 48 angles per full rotation (7.5 degrees)
+    const distanceIncrement = isMobile ? 3 : 4
 
-    let angle = (i * Math.PI / 7) % (2 * Math.PI) // Varied start angle per bubble
+    let distance = size * 0.5 // Start close to center
+    const startAngle = (i * Math.PI / 5) % (2 * Math.PI) // Varied start angle per bubble
+    let angle = startAngle
     let spiralIterations = 0
-    const maxIterations = 5000 // Safety limit
+    const maxIterations = 10000 // Higher limit for thorough search
 
     while (!found && distance < maxSearchDistance && spiralIterations < maxIterations) {
       // Test position at current angle and distance
       const testX = centerX + Math.cos(angle) * distance - radius
       const testY = centerY + Math.sin(angle) * distance - radius
 
-      if (isValidPosition(testX, testY, size, true)) {
+      if (isValidPosition(testX, testY, size)) {
         bestX = testX
-        // Apply oval compression
-        const deltaY = testY + radius - centerY
-        bestY = centerY + deltaY * ovalCompressionFactor - radius
+        bestY = testY
         found = true
         break
       }
@@ -120,39 +108,27 @@ const calculateBubblePositions = (members: Member[], containerWidth: number, con
       angle += angleIncrement
 
       // After full rotation, increase distance
-      if (angle >= 2 * Math.PI + (i * Math.PI / 7) % (2 * Math.PI)) {
+      if (angle >= startAngle + 2 * Math.PI) {
         distance += distanceIncrement
-        angle = (i * Math.PI / 7) % (2 * Math.PI) // Reset to start angle
+        angle = startAngle
       }
 
       spiralIterations++
     }
 
-    // Emergency fallback: grid-based search if spiral fails
+    // Fallback: if spiral search fails, use grid-based placement
     if (!found) {
-      const gridStep = 5
-      let searchRadius = size
-      const maxRadius = Math.max(containerWidth, containerHeight)
+      const gridStep = isMobile ? 8 : 10
 
-      while (!found && searchRadius < maxRadius) {
-        for (let dx = -searchRadius; dx <= searchRadius && !found; dx += gridStep) {
-          for (let dy = -searchRadius; dy <= searchRadius && !found; dy += gridStep) {
-            const testX = centerX + dx - radius
-            const testY = centerY + dy - radius
-
-            // Only test positions roughly at current search radius
-            const distFromCenter = Math.sqrt(dx * dx + dy * dy)
-            if (Math.abs(distFromCenter - searchRadius) < gridStep * 2) {
-              if (isValidPosition(testX, testY, size, true)) {
-                bestX = testX
-                const deltaY = testY + radius - centerY
-                bestY = centerY + deltaY * ovalCompressionFactor - radius
-                found = true
-              }
-            }
+      // Search the entire container systematically
+      for (let gridY = 0; gridY < containerHeight && !found; gridY += gridStep) {
+        for (let gridX = 0; gridX < containerWidth && !found; gridX += gridStep) {
+          if (isValidPosition(gridX, gridY, size)) {
+            bestX = gridX
+            bestY = gridY
+            found = true
           }
         }
-        searchRadius += size * 0.5
       }
     }
 
@@ -162,51 +138,67 @@ const calculateBubblePositions = (members: Member[], containerWidth: number, con
   return positions
 }
 
+
 export default function BubbleCloud({ members }: BubbleCloudProps) {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null)
-  const [containerDimensions, setContainerDimensions] = useState({ width: 800, height: 600 })
-  
+  const [containerDimensions, setContainerDimensions] = useState({ width: 800, height: 600, isMobile: false })
+
   const maxRank = useMemo(() => Math.max(...members.map(m => m.rank)), [members])
-  
+
   useEffect(() => {
     const updateDimensions = () => {
-      const width = Math.min(window.innerWidth - 100, 1000)
-      
-      // Dynamic height based on member count
+      const isMobile = window.innerWidth < 768
+      const width = Math.min(window.innerWidth - (isMobile ? 40 : 100), 1000)
+
+      // Dynamic height based on member count - taller on mobile to prevent overlap
       const memberCount = members.length
       let baseHeight = 400 // Minimum height
-      
-      if (memberCount <= 4) {
-        baseHeight = 300 // Compact for small teams
-      } else if (memberCount <= 8) {
-        baseHeight = 400 // Medium for mid-size teams
-      } else if (memberCount <= 12) {
-        baseHeight = 500 // Larger for big teams
+
+      if (isMobile) {
+        // Mobile: need more vertical space for bubbles
+        if (memberCount <= 4) {
+          baseHeight = 400
+        } else if (memberCount <= 8) {
+          baseHeight = 550
+        } else if (memberCount <= 12) {
+          baseHeight = 700
+        } else {
+          baseHeight = 850 // Much taller for large teams on mobile
+        }
       } else {
-        baseHeight = 600 // Maximum for very large teams
+        // Desktop: original values
+        if (memberCount <= 4) {
+          baseHeight = 300
+        } else if (memberCount <= 8) {
+          baseHeight = 400
+        } else if (memberCount <= 12) {
+          baseHeight = 500
+        } else {
+          baseHeight = 600
+        }
       }
-      
-      const height = Math.min(window.innerHeight * 0.6, baseHeight)
-      setContainerDimensions({ width, height })
+
+      const height = isMobile ? baseHeight : Math.min(window.innerHeight * 0.6, baseHeight)
+      setContainerDimensions({ width, height, isMobile })
     }
-    
+
     updateDimensions()
     window.addEventListener('resize', updateDimensions)
     return () => window.removeEventListener('resize', updateDimensions)
   }, [members.length])
-  
+
   const bubblePositions = useMemo(() => {
-    return calculateBubblePositions(members, containerDimensions.width, containerDimensions.height)
+    return calculateBubblePositions(members, containerDimensions.width, containerDimensions.height, containerDimensions.isMobile)
   }, [members, containerDimensions])
-  
+
   const handleMemberClick = (member: Member) => {
     setSelectedMember(member)
   }
-  
+
   const handleCloseModal = () => {
     setSelectedMember(null)
   }
-  
+
   return (
     <div className="w-full flex justify-center">
       <motion.div
@@ -234,15 +226,15 @@ export default function BubbleCloud({ members }: BubbleCloudProps) {
             </div>
           </div>
         </div>
-        
+
         {/* Render member bubbles */}
         {bubblePositions.map((bubble, index) => (
           <motion.div
             key={bubble.member.id}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.5, 
+            transition={{
+              duration: 0.5,
               delay: index * 0.1,
               type: 'spring',
               damping: 15
@@ -259,22 +251,22 @@ export default function BubbleCloud({ members }: BubbleCloudProps) {
             />
           </motion.div>
         ))}
-        
+
         {/* Connection lines for visual appeal */}
         <svg className="absolute inset-0 pointer-events-none" style={{ zIndex: -1 }}>
           {bubblePositions.slice(0, -1).map((bubble, index) => {
             const nextBubble = bubblePositions[index + 1]
             if (!nextBubble) return null
-            
+
             const startX = bubble.x + bubble.size / 2
             const startY = bubble.y + bubble.size / 2
             const endX = nextBubble.x + nextBubble.size / 2
             const endY = nextBubble.y + nextBubble.size / 2
-            
+
             // Only draw lines between nearby bubbles
             const distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2))
             if (distance > 150) return null
-            
+
             return (
               <motion.line
                 key={`${bubble.member.id}-${nextBubble.member.id}`}
@@ -294,7 +286,7 @@ export default function BubbleCloud({ members }: BubbleCloudProps) {
           })}
         </svg>
       </motion.div>
-      
+
       {/* Member modal */}
       <MemberModal
         member={selectedMember}
