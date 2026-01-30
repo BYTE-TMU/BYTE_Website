@@ -308,7 +308,7 @@ const allTeamMembers: Member[] = [
     name: 'Chris Ahn',
     position: 'HR Manager',
     roleDescription: 'Oversees BYTE\'s human resources and team culture, managing recruitment, member relations, and fostering a positive environment for all team members.',
-    profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Chris_Ahn.jpg',
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
