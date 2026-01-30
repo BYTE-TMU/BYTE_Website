@@ -122,7 +122,7 @@ const allTeamMembers: Member[] = [
     profilePicUrl: '/images/BYTE Website - Member Photos/Naetri_Niranjan.png',
     rank: 80,
     categories: ['Strategic Team'],
-    connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003'],
+    connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003', 'marketing-assoc-004'],
     email: 'naetri.niranjan@torontomu.ca'
   },
   {
@@ -143,7 +143,7 @@ const allTeamMembers: Member[] = [
     name: 'Shahd Alkadi',
     position: 'Marketing Associate',
     roleDescription: 'Creates engaging content and graphics that communicate BYTE\'s message, helping spread the word about our events and initiatives to the TMU community.',
-    profilePicUrl: '/images/BYTE Website - Member Photos/Shahd_Alkadi.heic',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Shahd_Alkadi.jpg',
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
@@ -170,6 +170,17 @@ const allTeamMembers: Member[] = [
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
     email: 'cerine.djerouni@torontomu.ca'
+  },
+  {
+    id: 'marketing-assoc-004',
+    name: 'Yuvin Cho',
+    position: 'Marketing Associate',
+    roleDescription: 'Creates engaging content and graphics that communicate BYTE\'s message, helping spread the word about our events and initiatives to the TMU community.',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Yuvin_Cho.jpg',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-marketing-001'],
+    email: 'yuvin.cho@torontomu.ca'
   },
   {
     id: 'events-assoc-001',
@@ -287,7 +298,7 @@ const allTeamMembers: Member[] = [
     position: 'Digital Media Manager',
     roleDescription: 'Manages BYTE\'s digital media presence, creating and curating content across social platforms to engage the TMU tech community and showcase our initiatives.',
     profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
-    rank: 60,
+    rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
     email: 'karunya.purohit@torontomu.ca'
@@ -298,7 +309,7 @@ const allTeamMembers: Member[] = [
     position: 'HR Manager',
     roleDescription: 'Oversees BYTE\'s human resources and team culture, managing recruitment, member relations, and fostering a positive environment for all team members.',
     profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
-    rank: 60,
+    rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
     email: 'chris.ahn@torontomu.ca'
