@@ -339,7 +339,7 @@ const allTeamMembers: Member[] = [
     email: 'roxie.reginold@torontomu.ca'
   },
   {
-    id: 'frontend-eng-001',
+    id: 'dir-frontend-001',
     name: 'Johan Philip',
     position: 'Director of Frontend Engineering',
     roleDescription: 'Leads BYTE\'s frontend development, crafting beautiful user interfaces and mentoring team members in modern web technologies.',
@@ -350,7 +350,7 @@ const allTeamMembers: Member[] = [
     email: 'johan.philip@torontomu.ca'
   },
   {
-    id: 'frontend-eng-003',
+    id: 'frontend-eng-001',
     name: 'Ethan Cha',
     position: 'Frontend Engineer',
     roleDescription: 'Builds responsive and interactive web experiences for BYTE\'s projects, turning designs into polished, user-friendly interfaces.',
@@ -361,7 +361,7 @@ const allTeamMembers: Member[] = [
     email: 'e1cha@torontomu.ca'
   },
   {
-    id: 'frontend-eng-003',
+    id: 'frontend-eng-002',
     name: 'Anthony Ma',
     position: 'Frontend Engineer',
     roleDescription: 'Builds responsive and interactive web experiences for BYTE\'s projects, turning designs into polished, user-friendly interfaces.',
@@ -383,7 +383,7 @@ const allTeamMembers: Member[] = [
     email: 'stephen1.nguyen@torontomu.ca'
   },
   {
-    id: 'aiml-eng-001',
+    id: 'dir-aiml-001',
     name: 'Nancy Maliackel',
     position: 'Director of AI/ML Engineering',
     roleDescription: 'Leads BYTE\'s AI and machine learning initiatives, exploring cutting-edge technologies and guiding projects that push the boundaries of innovation.',
@@ -405,7 +405,7 @@ const allTeamMembers: Member[] = [
     email: 'akbar.ali@torontomu.ca'
   },
   {
-    id: 'aiml-eng-001',
+    id: 'aiml-eng-002',
     name: 'Sanjana Urba',
     position: 'AI/ML Engineer',
     roleDescription: 'Develops machine learning models and AI solutions for BYTE\'s projects, applying data science techniques to solve real-world problems.',
