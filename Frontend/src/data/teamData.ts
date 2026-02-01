@@ -31,7 +31,8 @@ const allTeamMembers: Member[] = [
     rank: 100,
     categories: ['Leadership'],
     connections: ['cos-001', 'head-strat-001', 'head-tech-001', 'vp-tech-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],
-    email: 'mpatadia@torontomu.ca'
+    email: 'mpatadia@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/meet-patadia-958729282/'
   },
   {
     id: 'cos-001',
@@ -42,7 +43,8 @@ const allTeamMembers: Member[] = [
     rank: 95,
     categories: ['Leadership'],
     connections: ['pres-001', 'head-tech-001', 'head-strat-001'],
-    email: 'pearl.ved@torontomu.ca'
+    email: 'pearl.ved@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/pearlved/'
   },
 
   // Heads - In both Leadership and their respective teams
@@ -55,7 +57,8 @@ const allTeamMembers: Member[] = [
     rank: 85,
     categories: ['Leadership', 'Strategic Team'],
     connections: ['pres-001', 'cos-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],
-    email: 'yeji1.lee@torontomu.ca'
+    email: 'yeji1.lee@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/yeji-lee3/'
   },
   {
     id: 'head-tech-001',
@@ -66,7 +69,8 @@ const allTeamMembers: Member[] = [
     rank: 85,
     categories: ['Leadership', 'Technical Team'],
     connections: ['pres-001', 'cos-001', 'vp-tech-001', 'proj-exp-lead-001'],
-    email: 'hetvi.modi@torontomu.ca'
+    email: 'hetvi.modi@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/hetvi-m-3a670025b/'
   },
 
   // VPs - In both Leadership and their respective teams
@@ -79,7 +83,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'events-assoc-001', 'events-assoc-002', 'events-assoc-003'],
-    email: 'arshiya.das@torontomu.ca'
+    email: 'arshiya.das@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/arshiya-das-b97209331/'
   },
   {
     id: 'vp-finance-001',
@@ -90,7 +95,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'finance-assoc-001', 'finance-assoc-002', 'corp-rel-assoc-001'],
-    email: 'vpawa@torontomu.ca'
+    email: 'vpawa@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/vpawa/'
   },
   {
     id: 'vp-operations-001',
@@ -101,7 +107,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'operations-assoc-001', 'operations-assoc-002', 'operations-assoc-003'],
-    email: 'parth.pawa@torontomu.ca'
+    email: 'parth.pawa@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/parth-pawa-7ab14a222/'
   },
   {
     id: 'vp-growth-001',
@@ -112,7 +119,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'growth-assoc-001', 'growth-assoc-002'],
-    email: 'areej.ubaid@torontomu.ca'
+    email: 'areej.ubaid@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/areej-ubaid/'
   },
   {
     id: 'vp-marketing-001',
@@ -123,7 +131,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['pres-001', 'head-strat-001', 'marketing-assoc-001', 'marketing-assoc-002', 'marketing-assoc-003', 'marketing-assoc-004'],
-    email: 'naetri.niranjan@torontomu.ca'
+    email: 'naetri.niranjan@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/naetri-niranjan/'
   },
   {
     id: 'vp-tech-001',
@@ -134,7 +143,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Technical Team'],
     connections: ['pres-001', 'head-tech-001', 'dir-frontend-001', 'dir-ai-001', 'dir-backend-001'],
-    email: 'jacob.mobin@torontomu.ca'
+    email: 'jacob.mobin@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/jacob-mobin/'
   },
 
   // Strategic Team Members (not in Leadership)
@@ -147,7 +157,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
-    email: 'shahd.alkadi@torontomu.ca'
+    email: 'shahd.alkadi@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/shahd-alkadi/'
   },
   {
     id: 'marketing-assoc-002',
@@ -158,7 +169,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
-    email: 'areej.shariq@torontomu.ca'
+    email: 'areej.shariq@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/areejs/'
   },
   {
     id: 'marketing-assoc-003',
@@ -169,7 +181,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
-    email: 'cerine.djerouni@torontomu.ca'
+    email: 'cerine.djerouni@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/c%C3%A9rine-djerouni-785803334/'
   },
   {
     id: 'marketing-assoc-004',
@@ -202,7 +215,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-events-001'],
-    email: 'areej1.tariq@torontomu.ca'
+    email: 'areej1.tariq@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/-areejtariq-/'
   },
   {
     id: 'events-assoc-003',
@@ -213,7 +227,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-events-001'],
-    email: 'michael.aya@torontomu.ca'
+    email: 'michael.aya@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/michael-aya-ay-397634246/'
   },
   {
     id: 'growth-assoc-001',
@@ -235,7 +250,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-growth-001'],
-    email: 'abanshaji.lukose@torontomu.ca'
+    email: 'abanshaji.lukose@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/abanshaji/'
   },
   {
     id: 'finance-assoc-001',
@@ -246,7 +262,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-finance-001'],
-    email: 'u1muhammad@torontomu.ca'
+    email: 'u1muhammad@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/umarmoe/'
   },
   {
     id: 'finance-assoc-002',
@@ -257,7 +274,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-finance-001'],
-    email: 'angelina.tibayan@torontomu.ca'
+    email: 'angelina.tibayan@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/angelina-tibayan/'
   },
   {
     id: 'operations-assoc-001',
@@ -268,7 +286,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
-    email: 'ronald.bessada@torontomu.ca'
+    email: 'ronald.bessada@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/ronald-bessada-3b176a34a/'
   },
   {
     id: 'operations-assoc-002',
@@ -279,7 +298,8 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
-    email: 'sabesen.pathmanathan@torontomu.ca'
+    email: 'sabesen.pathmanathan@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/sabesen-pathmanathan/'
   },
   {
     id: 'corp-rel-assoc-001',
@@ -290,7 +310,20 @@ const allTeamMembers: Member[] = [
     rank: 60,
     categories: ['Strategic Team'],
     connections: ['vp-finance-001'],
-    email: 'jacky.jiang@torontomu.ca'
+    email: 'jacky.jiang@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/jacky-wx-jiang/'
+  },
+  {
+    id: 'corp-rel-assoc-002',
+    name: 'Aayan Areejo',
+    position: 'Corporate Relations Associate',
+    roleDescription: 'Builds partnerships with industry sponsors and companies, securing opportunities and resources that benefit BYTE members and our tech community.',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Aayan_Areejo.JPG',
+    rank: 60,
+    categories: ['Strategic Team'],
+    connections: ['vp-finance-001'],
+    email: 'aayan.areejo@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/aayanareejo/'
   },
   {
     id: 'digital-media-mgr-001',
@@ -301,7 +334,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-marketing-001'],
-    email: 'karunya.purohit@torontomu.ca'
+    email: 'karunya.purohit@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/karunya-purohit-288540328/'
   },
   {
     id: 'hr-mgr-001',
@@ -312,7 +346,8 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
-    email: 'chris.ahn@torontomu.ca'
+    email: 'chris.ahn@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/chris-ahn1/'
   },
 
   // Technical Team Members (not in Leadership)
@@ -336,7 +371,8 @@ const allTeamMembers: Member[] = [
     rank: 70,
     categories: ['Technical Team'],
     connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002'],
-    email: 'roxie.reginold@torontomu.ca'
+    email: 'roxie.reginold@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/roxie-reginold/'
   },
   {
     id: 'dir-frontend-001',
@@ -347,7 +383,8 @@ const allTeamMembers: Member[] = [
     rank: 70,
     categories: ['Technical Team'],
     connections: ['dir-frontend-001'],
-    email: 'johan.philip@torontomu.ca'
+    email: 'johan.philip@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/johanbphilip/'
   },
   {
     id: 'frontend-eng-001',
@@ -358,7 +395,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-frontend-001'],
-    email: 'e1cha@torontomu.ca'
+    email: 'e1cha@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/ethan-cha-5692b8372/'
   },
   {
     id: 'frontend-eng-002',
@@ -380,7 +418,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-frontend-001'],
-    email: 'stephen1.nguyen@torontomu.ca'
+    email: 'stephen1.nguyen@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/stphenguy/'
   },
   {
     id: 'dir-aiml-001',
@@ -391,7 +430,8 @@ const allTeamMembers: Member[] = [
     rank: 70,
     categories: ['Technical Team'],
     connections: ['dir-ai-001'],
-    email: 'nancy.maliackel@torontomu.ca'
+    email: 'nancy.maliackel@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/nancy-maliackel/'
   },
   {
     id: 'aiml-eng-001',
@@ -402,7 +442,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-ai-001'],
-    email: 'akbar.ali@torontomu.ca'
+    email: 'akbar.ali@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/akbar-ali06/'
   },
   {
     id: 'aiml-eng-002',
@@ -413,7 +454,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-ai-001'],
-    email: 'surba@torontomu.ca'
+    email: 'surba@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/sanjanaurba/'
   },
   {
     id: 'backend-eng-001',
@@ -424,7 +466,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-backend-001'],
-    email: 'Maha1.baig@torontomu.ca'
+    email: 'Maha1.baig@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/maha-baig-79752b292/'
   },
   {
     id: 'backend-eng-002',
@@ -435,7 +478,8 @@ const allTeamMembers: Member[] = [
     rank: 50,
     categories: ['Technical Team'],
     connections: ['dir-backend-001'],
-    email: 'e15kim@torontomu.ca'
+    email: 'e15kim@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/elenanakim/'
   }
 ]
 
