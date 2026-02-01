@@ -53,7 +53,7 @@ const allTeamMembers: Member[] = [
     name: 'Yeji Lee',
     position: 'Head of Strategic Operations',
     roleDescription: 'Oversees BYTE\'s strategic initiatives including events, marketing, growth, and operations—ensuring our non-technical teams work in harmony to amplify our impact.',
-    profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Yeji_Lee.jpeg',
     rank: 85,
     categories: ['Leadership', 'Strategic Team'],
     connections: ['pres-001', 'cos-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],
