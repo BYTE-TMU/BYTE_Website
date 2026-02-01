@@ -11,17 +11,17 @@ interface MemberBubbleProps {
 const getSizeFromRank = (rank: number, maxRank: number): number => {
   const maxSize = 120 // Maximum size for the highest ranked member in section
   const minSize = 50  // Minimum size for the lowest ranked member
-  
+
   // Calculate proportional size based on the highest rank in this section
   const ratio = rank / maxRank
   const size = minSize + (maxSize - minSize) * ratio
-  
+
   return Math.max(minSize, Math.min(maxSize, size))
 }
 
 export default function MemberBubble({ member, onClick, style, maxRank }: MemberBubbleProps) {
   const size = getSizeFromRank(member.rank, maxRank)
-  
+
   return (
     <motion.div
       className="absolute cursor-pointer group"
@@ -46,7 +46,7 @@ export default function MemberBubble({ member, onClick, style, maxRank }: Member
           whileHover={{ scale: 1.2 }}
           transition={{ duration: 0.3 }}
         />
-        
+
         {/* Profile image */}
         <div
           className="relative rounded-full overflow-hidden border-2 border-[#48F5FE] bg-gray-800"
@@ -58,9 +58,9 @@ export default function MemberBubble({ member, onClick, style, maxRank }: Member
             className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
             loading="lazy"
           />
-          
+
         </div>
-        
+
         {/* Rank indicator for high-ranking members */}
         {member.rank >= 80 && (
           <motion.div

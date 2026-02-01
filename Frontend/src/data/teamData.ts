@@ -27,7 +27,7 @@ const allTeamMembers: Member[] = [
     name: 'Meet Patadia',
     position: 'President',
     roleDescription: 'Leads BYTE\'s vision and overall direction, fostering a thriving tech community at TMU while ensuring our organization delivers impactful experiences for all members.',
-    profilePicUrl: '/images/BYTE Website - Member Photos/strategy_image_default.jpg',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Meet_Patadia.jpg',
     rank: 100,
     categories: ['Leadership'],
     connections: ['cos-001', 'head-strat-001', 'head-tech-001', 'vp-tech-001', 'vp-events-001', 'vp-community-001', 'vp-marketing-001'],

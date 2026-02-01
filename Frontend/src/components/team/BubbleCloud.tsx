@@ -15,124 +15,94 @@ interface BubblePosition {
   member: Member
 }
 
-const getSizeFromRank = (rank: number, maxRank: number, isMobile: boolean): number => {
-  // Use smaller sizes on mobile to prevent overlap
+const getSizeFromRank = (rank: number, maxRank: number, isMobile: boolean, memberCount: number): number => {
+  // Use uniform smaller sizes when there are many members
+  if (memberCount > 25) {
+    const maxSize = isMobile ? 55 : 70
+    const minSize = isMobile ? 40 : 55
+    const ratio = rank / maxRank
+    return minSize + (maxSize - minSize) * ratio
+  }
+
+  // Normal sizing for smaller groups
   const maxSize = isMobile ? 80 : 120
-  const minSize = isMobile ? 35 : 50
-
-  // Calculate proportional size based on the highest rank in this section
+  const minSize = isMobile ? 40 : 55
   const ratio = rank / maxRank
-  const size = minSize + (maxSize - minSize) * ratio
-
-  return Math.max(minSize, Math.min(maxSize, size))
+  return minSize + (maxSize - minSize) * ratio
 }
 
 const calculateBubblePositions = (members: Member[], containerWidth: number, containerHeight: number, isMobile: boolean): BubblePosition[] => {
-  const positions: BubblePosition[] = []
-  const sortedMembers = [...members].sort((a, b) => b.rank - a.rank) // Highest rank first
+  const sortedMembers = [...members].sort((a, b) => b.rank - a.rank)
   const maxRank = Math.max(...members.map(m => m.rank))
+  const memberCount = members.length
+  const padding = isMobile ? 15 : 30
 
-  const centerX = containerWidth / 2
-  const centerY = containerHeight / 2
-  const minGap = isMobile ? 8 : 6 // Increased gap to ensure no overlap
+  // For large teams, use a simple evenly-spaced grid approach
+  // Calculate optimal grid dimensions to fill the space
+  const availableWidth = containerWidth - padding * 2
+  const availableHeight = containerHeight - padding * 2
 
-  // Helper function to check if position is valid (no overlaps)
-  // All positions are stored and compared in their FINAL display coordinates
-  const isValidPosition = (x: number, y: number, size: number): boolean => {
-    const radius = size / 2
-    const padding = isMobile ? 5 : 10
+  // Calculate the optimal number of columns and rows
+  // Try to make cells as square as possible while fitting all members
+  const aspectRatio = availableWidth / availableHeight
+  let cols = Math.ceil(Math.sqrt(memberCount * aspectRatio))
+  let rows = Math.ceil(memberCount / cols)
 
-    // Check bounds
-    if (x < padding || y < padding ||
-      x + size > containerWidth - padding ||
-      y + size > containerHeight - padding) {
-      return false
+  // Ensure we have enough cells
+  while (cols * rows < memberCount) {
+    if (availableWidth / cols > availableHeight / rows) {
+      cols++
+    } else {
+      rows++
     }
-
-    // Check clearance from all existing bubbles
-    for (const existing of positions) {
-      const dx = (x + radius) - (existing.x + existing.size / 2)
-      const dy = (y + radius) - (existing.y + existing.size / 2)
-      const distanceBetween = Math.sqrt(dx * dx + dy * dy)
-      const requiredDistance = radius + existing.size / 2 + minGap
-
-      if (distanceBetween < requiredDistance) {
-        return false
-      }
-    }
-
-    return true
   }
 
-  for (let i = 0; i < sortedMembers.length; i++) {
+  // Calculate cell dimensions - spread across the ENTIRE available space
+  const cellWidth = availableWidth / cols
+  const cellHeight = availableHeight / rows
+
+  // Calculate the maximum bubble size that fits in a cell with good spacing
+  const maxBubbleSize = Math.min(cellWidth, cellHeight) * 0.85
+
+  // Create grid positions, centered in each cell
+  const gridPositions: { x: number; y: number; row: number; col: number }[] = []
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const x = padding + col * cellWidth + cellWidth / 2
+      const y = padding + row * cellHeight + cellHeight / 2
+      gridPositions.push({ x, y, row, col })
+    }
+  }
+
+  // Sort positions from center outward for ranking purposes
+  const centerX = containerWidth / 2
+  const centerY = containerHeight / 2
+  gridPositions.sort((a, b) => {
+    const distA = Math.sqrt(Math.pow(a.x - centerX, 2) + Math.pow(a.y - centerY, 2))
+    const distB = Math.sqrt(Math.pow(b.x - centerX, 2) + Math.pow(b.y - centerY, 2))
+    return distA - distB
+  })
+
+  // Place each member at a grid position
+  const positions: BubblePosition[] = []
+
+  for (let i = 0; i < sortedMembers.length && i < gridPositions.length; i++) {
     const member = sortedMembers[i]
-    const size = getSizeFromRank(member.rank, maxRank, isMobile)
+    const gridPos = gridPositions[i]
+
+    // Calculate size based on rank, but cap to fit in cell
+    let size = getSizeFromRank(member.rank, maxRank, isMobile, memberCount)
+    size = Math.min(size, maxBubbleSize)
+
     const radius = size / 2
 
-    let bestX = centerX - radius
-    let bestY = centerY - radius
-    let found = false
-
-    if (i === 0) {
-      // First (highest rank) bubble goes at exact center
-      positions.push({ x: bestX, y: bestY, size, member })
-      continue
-    }
-
-    // Spiral search - search outward from center
-    const maxSearchDistance = Math.max(containerWidth, containerHeight)
-
-    // Use smaller angle increments and distance steps for thorough coverage
-    const angleIncrement = Math.PI / 24 // 48 angles per full rotation (7.5 degrees)
-    const distanceIncrement = isMobile ? 3 : 4
-
-    let distance = size * 0.5 // Start close to center
-    const startAngle = (i * Math.PI / 5) % (2 * Math.PI) // Varied start angle per bubble
-    let angle = startAngle
-    let spiralIterations = 0
-    const maxIterations = 10000 // Higher limit for thorough search
-
-    while (!found && distance < maxSearchDistance && spiralIterations < maxIterations) {
-      // Test position at current angle and distance
-      const testX = centerX + Math.cos(angle) * distance - radius
-      const testY = centerY + Math.sin(angle) * distance - radius
-
-      if (isValidPosition(testX, testY, size)) {
-        bestX = testX
-        bestY = testY
-        found = true
-        break
-      }
-
-      // Increment angle
-      angle += angleIncrement
-
-      // After full rotation, increase distance
-      if (angle >= startAngle + 2 * Math.PI) {
-        distance += distanceIncrement
-        angle = startAngle
-      }
-
-      spiralIterations++
-    }
-
-    // Fallback: if spiral search fails, use grid-based placement
-    if (!found) {
-      const gridStep = isMobile ? 8 : 10
-
-      // Search the entire container systematically
-      for (let gridY = 0; gridY < containerHeight && !found; gridY += gridStep) {
-        for (let gridX = 0; gridX < containerWidth && !found; gridX += gridStep) {
-          if (isValidPosition(gridX, gridY, size)) {
-            bestX = gridX
-            bestY = gridY
-            found = true
-          }
-        }
-      }
-    }
-
-    positions.push({ x: bestX, y: bestY, size, member })
+    positions.push({
+      x: gridPos.x - radius,
+      y: gridPos.y - radius,
+      size,
+      member
+    })
   }
 
   return positions
@@ -148,37 +118,44 @@ export default function BubbleCloud({ members }: BubbleCloudProps) {
   useEffect(() => {
     const updateDimensions = () => {
       const isMobile = window.innerWidth < 768
-      const width = Math.min(window.innerWidth - (isMobile ? 40 : 100), 1000)
+      // Wider container for large teams
+      const memberCount = members.length
+      const maxWidth = memberCount > 25 ? 1200 : 1000
+      const width = Math.min(window.innerWidth - (isMobile ? 40 : 100), maxWidth)
 
       // Dynamic height based on member count - taller on mobile to prevent overlap
-      const memberCount = members.length
       let baseHeight = 400 // Minimum height
 
       if (isMobile) {
         // Mobile: need more vertical space for bubbles
         if (memberCount <= 4) {
-          baseHeight = 400
+          baseHeight = 450
         } else if (memberCount <= 8) {
-          baseHeight = 550
+          baseHeight = 600
         } else if (memberCount <= 12) {
-          baseHeight = 700
+          baseHeight = 800
+        } else if (memberCount <= 25) {
+          baseHeight = 1000
         } else {
-          baseHeight = 850 // Much taller for large teams on mobile
+          baseHeight = 1400 // Much taller for large teams on mobile
         }
       } else {
-        // Desktop: original values
+        // Desktop: larger values for wider spacing
         if (memberCount <= 4) {
-          baseHeight = 300
+          baseHeight = 350
         } else if (memberCount <= 8) {
-          baseHeight = 400
+          baseHeight = 450
         } else if (memberCount <= 12) {
-          baseHeight = 500
+          baseHeight = 550
+        } else if (memberCount <= 25) {
+          baseHeight = 650
         } else {
-          baseHeight = 600
+          baseHeight = 700 // Taller for 37 members to spread grid out
         }
       }
 
-      const height = isMobile ? baseHeight : Math.min(window.innerHeight * 0.6, baseHeight)
+      // Don't cap height on desktop when showing many members
+      const height = isMobile ? baseHeight : baseHeight
       setContainerDimensions({ width, height, isMobile })
     }
 
