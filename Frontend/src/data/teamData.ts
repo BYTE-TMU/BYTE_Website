@@ -346,7 +346,7 @@ const allTeamMembers: Member[] = [
     rank: 80,
     categories: ['Strategic Team'],
     connections: ['vp-operations-001'],
-    email: 'chris.ahn@torontomu.ca',
+    email: 'christopher.ahn@torontomu.ca',
     linkedInUrl: 'https://www.linkedin.com/in/chris-ahn1/'
   },
 
