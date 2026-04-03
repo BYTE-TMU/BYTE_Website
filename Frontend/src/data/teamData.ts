@@ -370,7 +370,7 @@ const allTeamMembers: Member[] = [
     profilePicUrl: '/images/BYTE Website - Member Photos/technology_image_default.jpg',
     rank: 70,
     categories: ['Technical Team'],
-    connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002'],
+    connections: ['vp-tech-001', 'backend-eng-001', 'backend-eng-002', 'backend-eng-003'],
     email: 'roxie.reginold@torontomu.ca',
     linkedInUrl: 'https://www.linkedin.com/in/roxie-reginold/'
   },
@@ -480,6 +480,18 @@ const allTeamMembers: Member[] = [
     connections: ['dir-backend-001'],
     email: 'e15kim@torontomu.ca',
     linkedInUrl: 'https://www.linkedin.com/in/elenanakim/'
+  },
+  {
+    id: 'backend-eng-003',
+    name: 'Kashmala Fareed',
+    position: 'Backend Engineer',
+    roleDescription: 'Builds robust server-side systems and APIs for BYTE\'s projects, ensuring our applications are fast, secure, and scalable.',
+    profilePicUrl: '/images/BYTE Website - Member Photos/Kashmala_Fareed.jpg',
+    rank: 50,
+    categories: ['Technical Team'],
+    connections: ['dir-backend-001'],
+    email: 'kfareed@torontomu.ca',
+    linkedInUrl: 'https://www.linkedin.com/in/kashmala-fareed2900/'
   }
 ]
 
