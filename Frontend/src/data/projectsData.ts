@@ -28,7 +28,7 @@ export const projectsData: Project[] = [
     status: 'On-going',
     description: 'Yapp is the campus social platform designed exclusively for TMU students. Connect with your community, discover amazing events across downtown Toronto, and explore your urban campus like never before.',
     technologies: ['Python', 'Flask', 'React', 'JavaScript', 'TailwindCSS', 'MongoDB', 'AWS'],
-    liveUrl: 'https://yap-mu.vercel.app',
+    liveUrl: 'https://yapp-mu.com',
     imageUrl: '/videos/yapp.png',
     type: 'current'
   }
